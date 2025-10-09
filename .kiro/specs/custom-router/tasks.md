@@ -228,8 +228,15 @@
     - 添加异常处理和回调执行
     - _Requirements: 1.4, 1.5_
 
-- [ ] 10. 实现Hilt依赖注入
-  - [ ] 10.1 创建RouterModule依赖注入模块
+- [x] 10. 实现Hilt依赖注入
+
+
+
+
+  - [x] 10.1 创建RouterModule依赖注入模块
+
+
+
     - 实现RouterModule使用@Module和@InstallIn注解
     - 提供RouteTable单例
     - 提供InterceptorManager单例
