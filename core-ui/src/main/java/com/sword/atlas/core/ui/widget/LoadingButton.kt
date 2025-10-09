@@ -68,7 +68,7 @@ class LoadingButton @JvmOverloads constructor(
         }
         
         // 设置进度条颜色
-        progressBar?.indeterminateTintList = currentTextColor
+        progressBar?.indeterminateTintList = android.content.res.ColorStateList.valueOf(currentTextColor)
     }
     
     /**

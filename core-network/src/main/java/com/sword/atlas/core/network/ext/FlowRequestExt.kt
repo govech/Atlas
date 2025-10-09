@@ -63,7 +63,7 @@ fun <T> flowRequestDirect(
  * @param e 异常对象
  * @return Result.Error 错误结果
  */
-private fun <T> handleException(e: Exception): Result.Error {
+private fun handleException(e: Exception): Result.Error {
     return when (e) {
         // 网络连接失败
         is UnknownHostException -> Result.Error(

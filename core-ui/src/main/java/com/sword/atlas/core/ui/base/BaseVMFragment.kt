@@ -11,7 +11,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
 import com.sword.atlas.core.common.base.BaseViewModel
 import com.sword.atlas.core.common.ext.toast
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 /**
@@ -20,12 +19,11 @@ import kotlinx.coroutines.launch
  * 提供ViewModel和ViewBinding的集成支持
  * 自动观察loading和error状态
  * 使用viewLifecycleOwner观察数据，避免内存泄漏
- * 使用@AndroidEntryPoint注解支持Hilt依赖注入
+ * 子类需要使用@AndroidEntryPoint注解支持Hilt依赖注入
  *
  * @param VB ViewBinding类型
  * @param VM ViewModel类型
  */
-@AndroidEntryPoint
 abstract class BaseVMFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
     
     private var _binding: VB? = null

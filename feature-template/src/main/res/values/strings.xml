@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App -->
+    <string name="app_logo">应用Logo</string>
+    
+    <!-- Login -->
+    <string name="login_title">欢迎登录</string>
+    <string name="login_username_hint">请输入用户名</string>
+    <string name="login_password_hint">请输入密码</string>
+    <string name="login_button">登录</string>
+    <string name="login_success">登录成功</string>
+    
+    <!-- User List -->
+    <string name="user_list_title">用户列表</string>
+    <string name="user_list_empty">暂无用户数据</string>
+    <string name="user_list_error">加载失败，点击重试</string>
+    
+    <!-- User Detail -->
+    <string name="user_detail_title">用户详情</string>
+    <string name="user_detail_id">用户ID：%s</string>
+    <string name="user_detail_username">用户名：%s</string>
+</resources>

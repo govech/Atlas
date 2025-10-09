@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.sword.atlas.core.network"
+    namespace = "com.sword.atlas.feature.template"
     compileSdk = 36
 
     defaultConfig {
@@ -17,12 +17,8 @@ android {
     }
 
     buildTypes {
-        debug {
-            buildConfigField("boolean", "DEBUG", "true")
-        }
         release {
             isMinifyEnabled = false
-            buildConfigField("boolean", "DEBUG", "false")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -31,7 +27,7 @@ android {
     }
     
     buildFeatures {
-        buildConfig = true
+        viewBinding = true
     }
     
     compileOptions {
@@ -46,22 +42,34 @@ android {
 
 dependencies {
     // Core Modules
-    api(project(":core-model"))
-    api(project(":core-common"))
+    implementation(project(":core-model"))
+    implementation(project(":core-common"))
+    implementation(project(":core-network"))
+    implementation(project(":core-database"))
+    implementation(project(":core-ui"))
     
     // AndroidX Core
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
     
-    // Retrofit
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.converter.gson)
+    // AndroidX Lifecycle
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
     
-    // OkHttp
-    implementation(libs.okhttp)
-    implementation(libs.okhttp.logging.interceptor)
+    // Material Design
+    implementation(libs.material)
     
-    // Gson
-    implementation(libs.gson)
+    // ConstraintLayout
+    implementation(libs.androidx.constraintlayout)
+    
+    // RecyclerView
+    implementation(libs.androidx.recyclerview)
+    
+    // Fragment
+    implementation(libs.androidx.fragment.ktx)
+    
+    // Activity
+    implementation(libs.androidx.activity.ktx)
     
     // Coroutines
     implementation(libs.kotlinx.coroutines.core)
@@ -71,10 +79,16 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
     
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+    
+    // SwipeRefreshLayout
+    implementation(libs.androidx.swiperefreshlayout)
+    
     // Testing
     testImplementation(libs.junit)
     testImplementation(libs.mockk)
-    testImplementation(libs.kotlinx.coroutines.test)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
