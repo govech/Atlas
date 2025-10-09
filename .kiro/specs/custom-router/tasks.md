@@ -15,8 +15,15 @@
   - 添加必要的Android和Kotlin依赖
   - _Requirements: 1.1, 1.2, 1.3_
 
-- [ ] 2. 实现异常处理系统
-  - [ ] 2.1 创建RouteException密封类
+- [x] 2. 实现异常处理系统
+
+
+
+
+
+  - [x] 2.1 创建RouteException密封类
+
+
     - 实现PathNotFoundException异常类
     - 实现ActivityNotFoundException异常类
     - 实现ParameterTypeException异常类
@@ -26,7 +33,9 @@
     - 添加companion object工厂方法
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5_
 
-  - [ ] 2.2 实现FallbackHandler降级处理器
+  - [x] 2.2 实现FallbackHandler降级处理器
+
+
     - 创建FallbackHandler单例类
     - 实现setFallbackActivity方法
     - 实现setFallbackEnabled方法
