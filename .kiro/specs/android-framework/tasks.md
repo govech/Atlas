@@ -36,14 +36,23 @@
     - 为所有类添加完整的KDoc注释
     - _Requirements: 2.2, 2.3, 2.4, 2.5, 2.8_
 
-- [ ] 3. 创建core-common模块
-  - [ ] 3.1 创建模块结构和build.gradle.kts
+- [x] 3. 创建core-common模块
+
+
+
+
+
+
+  - [x] 3.1 创建模块结构和build.gradle.kts
+
     - 创建core-common模块目录结构
     - 配置build.gradle.kts，依赖core-model模块
     - 设置包名为`com.sword.atlas.core.common`
     - _Requirements: 5.1_
   
-  - [ ] 3.2 实现基础架构类
+  - [x] 3.2 实现基础架构类
+
+
     - 实现BaseViewModel，提供loading和error状态管理
     - 实现BaseRepository，提供统一的数据访问模式
     - 实现DispatcherProvider接口和默认实现
@@ -51,7 +60,9 @@
     - 实现ErrorMapper错误映射工具
     - _Requirements: 5.1, 5.2, 5.13, 5.14, 5.15_
   
-  - [ ] 3.3 实现工具类
+
+  - [x] 3.3 实现工具类
+
     - 实现LogUtil日志工具，支持Debug/Release环境切换
     - 实现SPUtil，提供类型安全的SharedPreferences操作
     - 实现JsonUtil，封装Gson的JSON解析功能
@@ -60,14 +71,18 @@
     - 实现NetworkUtil，检测网络连接状态
     - _Requirements: 5.7, 5.8, 5.9, 5.10, 5.11, 5.12_
   
-  - [ ] 3.4 实现Kotlin扩展函数
+  - [x] 3.4 实现Kotlin扩展函数
+
+
     - 实现StringExt字符串扩展（isNullOrBlank、toIntOrDefault等）
     - 实现ContextExt扩展（toast、dp2px、px2dp等）
     - 实现ViewExt扩展（visible、gone、防抖点击等）
     - 实现FlowExt扩展（collectOnMain、onResult等）
     - _Requirements: 5.3, 5.4, 5.5, 5.6_
   
-  - [ ] 3.5 实现常量定义
+  - [x] 3.5 实现常量定义
+
+
     - 创建AppConstants对象，定义应用级常量
     - _Requirements: 5.15_
 
