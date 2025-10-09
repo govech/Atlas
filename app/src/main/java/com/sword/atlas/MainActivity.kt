@@ -17,15 +17,12 @@ class MainActivity : BaseActivity() {
     
     private lateinit var binding: ActivityMainBinding
     
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun getLayoutId(): Int = R.layout.activity_main
+    
+    override fun initView() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         
-        initView()
-    }
-    
-    private fun initView() {
         // 登录功能
         binding.btnLogin.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))

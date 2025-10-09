@@ -78,14 +78,20 @@ class MultiTypeAdapter<T : Any>(
     
     /**
      * 默认DiffCallback
+     * 
+     * 注意：这是一个简单的默认实现，实际使用时建议传入自定义的DiffCallback
+     * 以获得更好的性能和正确的比较逻辑
      */
+    @Suppress("DiffUtilEquals")
     private class DefaultDiffCallback<T : Any> : DiffUtil.ItemCallback<T>() {
         override fun areItemsTheSame(oldItem: T, newItem: T): Boolean {
-            return oldItem == newItem
+            // 默认使用引用比较，子类应该重写此方法提供正确的比较逻辑
+            return oldItem === newItem
         }
         
         override fun areContentsTheSame(oldItem: T, newItem: T): Boolean {
-            return oldItem == newItem
+            // 如果是同一个对象，内容肯定相同
+            return oldItem === newItem
         }
     }
 }

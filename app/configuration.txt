@@ -1,0 +1,1422 @@
+# The proguard configuration file for the following section is C:\Users\cairong\work\prcatice\Atlas\app\build\intermediates\aapt_proguard_file\release\processReleaseResources\aapt_rules.txt
+-keep class androidx.core.app.CoreComponentFactory { <init>(); }
+-keep class androidx.profileinstaller.ProfileInstallReceiver { <init>(); }
+-keep class androidx.room.MultiInstanceInvalidationService { <init>(); }
+-keep class androidx.startup.InitializationProvider { <init>(); }
+-keep class com.sword.atlas.App { <init>(); }
+-keep class com.sword.atlas.MainActivity { <init>(); }
+-keep class com.sword.atlas.feature.template.ui.login.LoginActivity { <init>(); }
+-keep class com.sword.atlas.feature.template.ui.userdetail.UserDetailActivity { <init>(); }
+-keep class com.sword.atlas.feature.template.ui.userlist.UserListActivity { <init>(); }
+-keep class android.widget.Space { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.app.AlertController$RecycleListView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.view.menu.ActionMenuItemView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.view.menu.ExpandedMenuView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.view.menu.ListMenuItemView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.ActionBarContainer { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.ActionBarContextView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.ActionBarOverlayLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.ActionMenuView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.ActivityChooserView$InnerLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.AlertDialogLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.ButtonBarLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.ContentFrameLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.DialogTitle { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.FitWindowsFrameLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.FitWindowsLinearLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.SearchView$SearchAutoComplete { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.Toolbar { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.ViewStubCompat { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.constraintlayout.helper.widget.Flow { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.constraintlayout.widget.ConstraintLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.coordinatorlayout.widget.CoordinatorLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.core.widget.NestedScrollView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.fragment.app.FragmentContainerView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.recyclerview.widget.RecyclerView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.swiperefreshlayout.widget.SwipeRefreshLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.appbar.MaterialToolbar { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.button.MaterialButton { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.button.MaterialButtonToggleGroup { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.card.MaterialCardView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.chip.Chip { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.datepicker.MaterialCalendarGridView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.divider.MaterialDivider { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.internal.BaselineLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.internal.CheckableImageButton { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.internal.ClippableRoundedCornerLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.internal.NavigationMenuItemView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.internal.NavigationMenuView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.internal.TouchObserverFrameLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.snackbar.Snackbar$SnackbarLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.snackbar.SnackbarContentLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.textfield.TextInputEditText { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.textfield.TextInputLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.timepicker.ChipTextInputComboView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.timepicker.ClockFaceView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.timepicker.ClockHandView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.timepicker.TimePickerView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.sword.atlas.core.ui.widget.StateLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.sword.atlas.core.ui.widget.TitleBar { <init>(android.content.Context, android.util.AttributeSet); }
+
+
+# End of content from C:\Users\cairong\work\prcatice\Atlas\app\build\intermediates\aapt_proguard_file\release\processReleaseResources\aapt_rules.txt
+# The proguard configuration file for the following section is C:\Users\cairong\work\prcatice\Atlas\app\build\intermediates\default_proguard_files\global\proguard-android-optimize.txt-8.10.1
+# This is a configuration file for ProGuard.
+# http://proguard.sourceforge.net/index.html#manual/usage.html
+#
+# Starting with version 2.2 of the Android plugin for Gradle, this file is distributed together with
+# the plugin and unpacked at build-time. The files in $ANDROID_HOME are no longer maintained and
+# will be ignored by new version of the Android plugin for Gradle.
+
+# Optimizations: If you don't want to optimize, use the proguard-android.txt configuration file
+# instead of this one, which turns off the optimization flags.
+-allowaccessmodification
+
+# Preserve some attributes that may be required for reflection.
+-keepattributes AnnotationDefault,
+                EnclosingMethod,
+                InnerClasses,
+                RuntimeVisibleAnnotations,
+                RuntimeVisibleParameterAnnotations,
+                RuntimeVisibleTypeAnnotations,
+                Signature
+
+-keep public class com.google.vending.licensing.ILicensingService
+-keep public class com.android.vending.licensing.ILicensingService
+-keep public class com.google.android.vending.licensing.ILicensingService
+-dontnote com.android.vending.licensing.ILicensingService
+-dontnote com.google.vending.licensing.ILicensingService
+-dontnote com.google.android.vending.licensing.ILicensingService
+
+# For native methods, see https://www.guardsquare.com/manual/configuration/examples#native
+-keepclasseswithmembernames,includedescriptorclasses class * {
+    native <methods>;
+}
+
+# Keep setters in Views so that animations can still work.
+-keepclassmembers public class * extends android.view.View {
+    void set*(***);
+    *** get*();
+}
+
+# We want to keep methods in Activity that could be used in the XML attribute onClick.
+-keepclassmembers class * extends android.app.Activity {
+    public void *(android.view.View);
+}
+
+# For enumeration classes, see https://www.guardsquare.com/manual/configuration/examples#enumerations
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+-keepclassmembers class * implements android.os.Parcelable {
+    public static final ** CREATOR;
+}
+
+# Preserve annotated Javascript interface methods.
+-keepclassmembers class * {
+    @android.webkit.JavascriptInterface <methods>;
+}
+
+# The support libraries contains references to newer platform versions.
+# Don't warn about those in case this app is linking against an older
+# platform version. We know about them, and they are safe.
+-dontnote android.support.**
+-dontnote androidx.**
+-dontwarn android.support.**
+-dontwarn androidx.**
+
+# Understand the @Keep support annotation.
+-keep class android.support.annotation.Keep
+
+-keep @android.support.annotation.Keep class * {*;}
+
+-keepclasseswithmembers class * {
+    @android.support.annotation.Keep <methods>;
+}
+
+-keepclasseswithmembers class * {
+    @android.support.annotation.Keep <fields>;
+}
+
+-keepclasseswithmembers class * {
+    @android.support.annotation.Keep <init>(...);
+}
+
+# These classes are duplicated between android.jar and org.apache.http.legacy.jar.
+-dontnote org.apache.http.**
+-dontnote android.net.http.**
+
+# These classes are duplicated between android.jar and core-lambda-stubs.jar.
+-dontnote java.lang.invoke.**
+
+# End of content from C:\Users\cairong\work\prcatice\Atlas\app\build\intermediates\default_proguard_files\global\proguard-android-optimize.txt-8.10.1
+# The proguard configuration file for the following section is C:\Users\cairong\work\prcatice\Atlas\app\proguard-rules.pro
+# Add project specific ProGuard rules here.
+# You can control the set of applied configuration files using the
+# proguardFiles setting in build.gradle.
+#
+# For more details, see
+#   http://developer.android.com/guide/developing/tools/proguard.html
+
+# ================================
+# 基础混淆配置
+# ================================
+
+# 代码优化
+-optimizationpasses 5
+-dontusemixedcaseclassnames
+-dontskipnonpubliclibraryclasses
+-verbose
+
+# 保留行号信息，便于调试崩溃日志
+-keepattributes SourceFile,LineNumberTable
+-renamesourcefileattribute SourceFile
+
+# 保留注解
+-keepattributes *Annotation*
+
+# 保留泛型信息
+-keepattributes Signature
+
+# 保留异常信息
+-keepattributes Exceptions
+
+# ================================
+# Android基础组件
+# ================================
+
+# 保留Activity、Service、BroadcastReceiver、ContentProvider
+-keep public class * extends android.app.Activity
+-keep public class * extends android.app.Application
+-keep public class * extends android.app.Service
+-keep public class * extends android.content.BroadcastReceiver
+-keep public class * extends android.content.ContentProvider
+-keep public class * extends android.app.Fragment
+-keep public class * extends androidx.fragment.app.Fragment
+
+# 保留View构造方法
+-keepclasseswithmembers class * {
+    public <init>(android.content.Context, android.util.AttributeSet);
+}
+-keepclasseswithmembers class * {
+    public <init>(android.content.Context, android.util.AttributeSet, int);
+}
+
+# 保留自定义View的get和set方法
+-keepclassmembers public class * extends android.view.View {
+    void set*(***);
+    *** get*();
+}
+
+# 保留Parcelable序列化类
+-keep class * implements android.os.Parcelable {
+    public static final android.os.Parcelable$Creator *;
+}
+
+# 保留Serializable序列化类
+-keepclassmembers class * implements java.io.Serializable {
+    static final long serialVersionUID;
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}
+
+# 保留枚举类
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+# 保留R文件
+-keep class **.R$* {
+    *;
+}
+
+# 保留native方法
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+
+# ================================
+# 反射使用的类
+# ================================
+
+# 保留所有使用@Keep注解的类和成员
+-keep @androidx.annotation.Keep class * {*;}
+-keepclassmembers class * {
+    @androidx.annotation.Keep *;
+}
+
+# 保留Application类
+-keep class com.sword.atlas.App { *; }
+
+# ================================
+# Hilt混淆规则
+# ================================
+
+# 保留Hilt核心类
+-keep class dagger.hilt.** { *; }
+-keep class javax.inject.** { *; }
+-keep class dagger.** { *; }
+
+# 保留Hilt生成的类
+-keep class * extends dagger.hilt.android.internal.managers.ViewComponentManager$FragmentContextWrapper { *; }
+-keep class **_HiltModules { *; }
+-keep class **_HiltModules$** { *; }
+-keep class **_Factory { *; }
+-keep class **_MembersInjector { *; }
+
+# 保留Hilt注解的类
+-keep @dagger.hilt.android.lifecycle.HiltViewModel class * { *; }
+-keep @dagger.Module class * { *; }
+-keep @dagger.hilt.InstallIn class * { *; }
+-keep @dagger.Provides class * { *; }
+-keep @dagger.Binds class * { *; }
+
+# 保留Hilt入口点
+-keep @dagger.hilt.android.HiltAndroidApp class * { *; }
+-keep @dagger.hilt.android.AndroidEntryPoint class * { *; }
+
+# 保留Hilt注入的构造函数
+-keepclasseswithmembers class * {
+    @javax.inject.Inject <init>(...);
+}
+
+# 保留Hilt注入的字段
+-keepclassmembers class * {
+    @javax.inject.Inject <fields>;
+}
+
+# 保留Hilt注入的方法
+-keepclassmembers class * {
+    @javax.inject.Inject <methods>;
+}
+
+# 保留Hilt Component
+-keep interface dagger.hilt.android.components.** { *; }
+
+# 保留Hilt内部类
+-keep class dagger.hilt.android.internal.** { *; }
+-keep class dagger.hilt.internal.** { *; }
+
+# 忽略Hilt警告
+-dontwarn dagger.hilt.**
+-dontwarn javax.inject.**
+
+# ================================
+# Kotlin相关
+# ================================
+
+# 保留Kotlin元数据
+-keep class kotlin.Metadata { *; }
+
+# 保留Kotlin协程
+-keepclassmembernames class kotlinx.** {
+    volatile <fields>;
+}
+
+# 保留Kotlin反射
+-keep class kotlin.reflect.** { *; }
+
+# ================================
+# 数据模型类
+# ================================
+
+# 保留所有数据模型类（根据实际项目调整包名）
+-keep class com.sword.atlas.core.model.** { *; }
+-keep class com.sword.atlas.feature.template.data.model.** { *; }
+
+# ================================
+# WebView相关
+# ================================
+
+# 如果使用WebView，保留JavaScript接口
+-keepclassmembers class * {
+    @android.webkit.JavascriptInterface <methods>;
+}
+
+# ================================
+# 其他配置
+# ================================
+
+# 移除日志
+-assumenosideeffects class android.util.Log {
+    public static *** d(...);
+    public static *** v(...);
+    public static *** i(...);
+}
+
+# 忽略警告
+-dontwarn javax.annotation.**
+-dontwarn org.jetbrains.annotations.**
+
+# ================================
+# R8优化配置
+# ================================
+
+# 启用优化
+-optimizations !code/simplification/arithmetic,!code/simplification/cast,!field/*,!class/merging/*
+
+# 优化次数
+-optimizationpasses 5
+
+# 允许访问和修改有修饰符的类和类的成员
+-allowaccessmodification
+
+# 合并接口和类
+-mergeinterfacesaggressively
+
+# 重新打包所有类到单一包
+# -repackageclasses ''
+
+# 优化时允许访问并修改有修饰符的类和类的成员
+-overloadaggressively
+
+# 预校验（Android不需要，可以加快混淆速度）
+-dontpreverify
+
+# 保留源文件名和行号信息，便于调试
+-keepattributes SourceFile,LineNumberTable
+
+# 重命名源文件名为"SourceFile"
+-renamesourcefileattribute SourceFile
+
+# ================================
+# 资源优化配置
+# ================================
+
+# 移除未使用的资源（在build.gradle中通过isShrinkResources = true启用）
+# R8会自动处理资源优化
+
+# ================================
+# 代码优化配置
+# ================================
+
+# 移除未使用的代码
+# R8会自动移除未使用的类、方法和字段
+
+# 内联优化
+# R8会自动进行方法内联优化
+
+# 类合并优化
+# R8会自动合并可以合并的类
+
+# ================================
+# 调试配置
+# ================================
+
+# 如果需要调试混淆后的代码，可以保留更多信息
+# -keepattributes LocalVariableTable,LocalVariableTypeTable
+
+# 打印混淆映射
+-printmapping mapping.txt
+
+# 打印种子（未混淆的类和成员）
+-printseeds seeds.txt
+
+# 打印未使用的代码
+-printusage unused.txt
+
+# 打印配置信息
+-printconfiguration configuration.txt
+
+# End of content from C:\Users\cairong\work\prcatice\Atlas\app\proguard-rules.pro
+# The proguard configuration file for the following section is C:\Users\cairong\work\prcatice\Atlas\feature-template\build\intermediates\consumer_proguard_dir\release\exportReleaseConsumerProguardFiles\lib0\proguard.txt
+# ================================
+# feature-template模块混淆规则
+# ================================
+
+# 保留所有数据模型类
+-keep class com.sword.atlas.feature.template.data.model.** { *; }
+
+# 保留所有API接口
+-keep interface com.sword.atlas.feature.template.data.api.** { *; }
+
+# 保留所有Repository
+-keep class com.sword.atlas.feature.template.data.repository.** { *; }
+
+# 保留所有ViewModel（Hilt会处理，但额外保留确保安全）
+-keep class com.sword.atlas.feature.template.ui.**.ViewModel { *; }
+
+# 保留所有Activity和Fragment
+-keep class com.sword.atlas.feature.template.ui.**.Activity { *; }
+-keep class com.sword.atlas.feature.template.ui.**.Fragment { *; }
+
+# 保留所有Adapter
+-keep class com.sword.atlas.feature.template.ui.**.Adapter { *; }
+
+# End of content from C:\Users\cairong\work\prcatice\Atlas\feature-template\build\intermediates\consumer_proguard_dir\release\exportReleaseConsumerProguardFiles\lib0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\work\prcatice\Atlas\core-ui\build\intermediates\consumer_proguard_dir\release\exportReleaseConsumerProguardFiles\lib0\proguard.txt
+# ================================
+# core-ui模块混淆规则
+# ================================
+
+# ================================
+# ViewBinding混淆规则
+# ================================
+
+# 保留ViewBinding类
+-keep class * implements androidx.viewbinding.ViewBinding {
+    public static *** bind(android.view.View);
+    public static *** inflate(android.view.LayoutInflater);
+    public static *** inflate(android.view.LayoutInflater, android.view.ViewGroup, boolean);
+}
+
+# 保留ViewBinding扩展函数
+-keep class com.sword.atlas.core.ui.ext.ViewBindingExt** { *; }
+
+# ================================
+# 自定义View混淆规则
+# ================================
+
+# 保留自定义View的构造方法
+-keep public class * extends android.view.View {
+    public <init>(android.content.Context);
+    public <init>(android.content.Context, android.util.AttributeSet);
+    public <init>(android.content.Context, android.util.AttributeSet, int);
+}
+
+# 保留自定义控件
+-keep class com.sword.atlas.core.ui.widget.** { *; }
+
+# 保留自定义View的属性方法
+-keepclassmembers public class * extends android.view.View {
+    void set*(***);
+    *** get*();
+}
+
+# ================================
+# Activity和Fragment基类
+# ================================
+
+# 保留Activity基类
+-keep class com.sword.atlas.core.ui.base.BaseActivity { *; }
+-keep class com.sword.atlas.core.ui.base.BaseVMActivity { *; }
+
+# 保留Fragment基类
+-keep class com.sword.atlas.core.ui.base.BaseFragment { *; }
+-keep class com.sword.atlas.core.ui.base.BaseVMFragment { *; }
+
+# ================================
+# Adapter和ViewHolder
+# ================================
+
+# 保留Adapter基类
+-keep class com.sword.atlas.core.ui.adapter.BaseAdapter { *; }
+-keep class com.sword.atlas.core.ui.adapter.BaseViewHolder { *; }
+-keep class com.sword.atlas.core.ui.adapter.MultiTypeAdapter { *; }
+
+# ================================
+# Dialog
+# ================================
+
+# 保留Dialog类
+-keep class com.sword.atlas.core.ui.dialog.** { *; }
+
+# ================================
+# 其他UI组件
+# ================================
+
+# 保留StateLayout
+-keep class com.sword.atlas.core.ui.widget.StateLayout { *; }
+
+# 保留TitleBar
+-keep class com.sword.atlas.core.ui.widget.TitleBar { *; }
+
+# 保留LoadingButton
+-keep class com.sword.atlas.core.ui.widget.LoadingButton { *; }
+
+# End of content from C:\Users\cairong\work\prcatice\Atlas\core-ui\build\intermediates\consumer_proguard_dir\release\exportReleaseConsumerProguardFiles\lib0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\work\prcatice\Atlas\core-network\build\intermediates\consumer_proguard_dir\release\exportReleaseConsumerProguardFiles\lib0\proguard.txt
+# ================================
+# core-network模块混淆规则
+# ================================
+
+# ================================
+# Retrofit混淆规则
+# ================================
+
+# 保留注解
+-keepattributes Signature, InnerClasses, EnclosingMethod
+-keepattributes RuntimeVisibleAnnotations, RuntimeVisibleParameterAnnotations
+-keepattributes AnnotationDefault
+
+# 保留Retrofit接口中的所有方法
+-keepclassmembers,allowshrinking,allowobfuscation interface * {
+    @retrofit2.http.* <methods>;
+}
+
+# 保留Retrofit服务接口
+-keep,allowobfuscation interface * extends retrofit2.Call
+-keep,allowobfuscation interface retrofit2.Call
+
+# 保留Retrofit注解
+-keep interface retrofit2.http.** { *; }
+
+# 忽略Retrofit警告
+-dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
+-dontwarn javax.annotation.**
+-dontwarn kotlin.Unit
+-dontwarn retrofit2.KotlinExtensions
+-dontwarn retrofit2.KotlinExtensions$*
+-dontwarn retrofit2.-KotlinExtensions
+
+# 保留Retrofit响应类型
+-keep class retrofit2.Response { *; }
+
+# ================================
+# OkHttp混淆规则
+# ================================
+
+# 保留OkHttp平台类
+-dontwarn okhttp3.**
+-dontwarn okio.**
+-dontwarn javax.annotation.**
+-dontwarn org.conscrypt.**
+
+# 保留OkHttp内部类
+-keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
+
+# 保留OkHttp接口
+-keep class okhttp3.** { *; }
+-keep interface okhttp3.** { *; }
+
+# 保留Okio
+-keep class okio.** { *; }
+-dontwarn okio.**
+
+# ================================
+# Gson混淆规则
+# ================================
+
+# 保留Gson注解
+-keepattributes Signature
+-keepattributes *Annotation*
+
+# 保留Gson类
+-dontwarn sun.misc.**
+-keep class com.google.gson.** { *; }
+
+# 保留Gson适配器
+-keep class * implements com.google.gson.TypeAdapter
+-keep class * implements com.google.gson.TypeAdapterFactory
+-keep class * implements com.google.gson.JsonSerializer
+-keep class * implements com.google.gson.JsonDeserializer
+
+# 保留使用Gson注解的字段
+-keepclassmembers,allowobfuscation class * {
+    @com.google.gson.annotations.SerializedName <fields>;
+}
+
+# 保留泛型类型
+-keep class com.google.gson.reflect.TypeToken { *; }
+-keep class * extends com.google.gson.reflect.TypeToken
+
+# ================================
+# 网络模块特定规则
+# ================================
+
+# 保留所有API接口
+-keep interface com.sword.atlas.**.api.** { *; }
+
+# 保留所有拦截器
+-keep class com.sword.atlas.core.network.interceptor.** { *; }
+
+# 保留网络管理器
+-keep class com.sword.atlas.core.network.manager.** { *; }
+
+# 保留RetrofitClient
+-keep class com.sword.atlas.core.network.RetrofitClient { *; }
+
+# 保留数据模型类
+-keep class com.sword.atlas.core.model.** { *; }
+-keep class com.sword.atlas.**.data.model.** { *; }
+
+# ================================
+# Kotlin协程相关
+# ================================
+
+# 保留协程相关类
+-keepclassmembernames class kotlinx.** {
+    volatile <fields>;
+}
+
+# 保留挂起函数
+-keepclassmembers class * {
+    *** *Async(...);
+    *** *Sync(...);
+}
+
+# End of content from C:\Users\cairong\work\prcatice\Atlas\core-network\build\intermediates\consumer_proguard_dir\release\exportReleaseConsumerProguardFiles\lib0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\work\prcatice\Atlas\core-database\build\intermediates\consumer_proguard_dir\release\exportReleaseConsumerProguardFiles\lib0\proguard.txt
+# ================================
+# core-database模块混淆规则
+# ================================
+
+# ================================
+# Room混淆规则
+# ================================
+
+# 保留RoomDatabase类
+-keep class * extends androidx.room.RoomDatabase
+-keep class androidx.room.RoomDatabase { *; }
+
+# 保留RoomDatabase的Companion对象
+-keepclassmembers class * extends androidx.room.RoomDatabase {
+    public static ** Companion;
+}
+
+# 保留所有Entity实体类
+-keep @androidx.room.Entity class * { *; }
+-keepclassmembers @androidx.room.Entity class * {
+    *;
+}
+
+# 保留所有DAO接口
+-keep @androidx.room.Dao interface * { *; }
+-keep interface * extends androidx.room.Dao
+-keepclassmembers interface * extends androidx.room.Dao {
+    *;
+}
+
+# 保留Database注解的类
+-keep @androidx.room.Database class * { *; }
+
+# 保留TypeConverter
+-keep @androidx.room.TypeConverter class * { *; }
+-keepclassmembers class * {
+    @androidx.room.TypeConverter *;
+}
+
+# 保留Room注解
+-keepattributes *Annotation*
+
+# 保留Room生成的实现类
+-keep class * extends androidx.room.EntityInsertionAdapter { *; }
+-keep class * extends androidx.room.EntityDeletionOrUpdateAdapter { *; }
+-keep class * extends androidx.room.SharedSQLiteStatement { *; }
+
+# ================================
+# 数据库实体相关
+# ================================
+
+# 保留所有数据库实体类
+-keep class com.sword.atlas.core.database.entity.** { *; }
+
+# 保留所有DAO类
+-keep class com.sword.atlas.core.database.dao.** { *; }
+
+# 保留AppDatabase
+-keep class com.sword.atlas.core.database.AppDatabase { *; }
+-keep class com.sword.atlas.core.database.AppDatabase_Impl { *; }
+
+# ================================
+# Kotlin相关
+# ================================
+
+# 保留Kotlin元数据
+-keep class kotlin.Metadata { *; }
+
+# 保留协程相关
+-keepclassmembernames class kotlinx.** {
+    volatile <fields>;
+}
+
+# ================================
+# 其他配置
+# ================================
+
+# 保留泛型信息
+-keepattributes Signature
+
+# 忽略警告
+-dontwarn androidx.room.**
+
+# End of content from C:\Users\cairong\work\prcatice\Atlas\core-database\build\intermediates\consumer_proguard_dir\release\exportReleaseConsumerProguardFiles\lib0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\work\prcatice\Atlas\core-common\build\intermediates\consumer_proguard_dir\release\exportReleaseConsumerProguardFiles\lib0\proguard.txt
+# ================================
+# core-common模块混淆规则
+# ================================
+
+# 保留所有基础类
+-keep class com.sword.atlas.core.common.base.** { *; }
+
+# 保留所有工具类
+-keep class com.sword.atlas.core.common.util.** { *; }
+
+# 保留所有扩展函数
+-keep class com.sword.atlas.core.common.ext.** { *; }
+
+# 保留常量类
+-keep class com.sword.atlas.core.common.constant.** { *; }
+
+# 保留异常处理器
+-keep class com.sword.atlas.core.common.exception.** { *; }
+
+# 保留Kotlin扩展函数
+-keepclassmembers class com.sword.atlas.core.common.ext.** {
+    public static *** *(...);
+}
+
+# End of content from C:\Users\cairong\work\prcatice\Atlas\core-common\build\intermediates\consumer_proguard_dir\release\exportReleaseConsumerProguardFiles\lib0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\work\prcatice\Atlas\core-model\build\intermediates\consumer_proguard_dir\release\exportReleaseConsumerProguardFiles\lib0\proguard.txt
+# ================================
+# core-model模块混淆规则
+# ================================
+
+# 保留所有数据模型类
+# 数据模型类通常用于序列化/反序列化，需要保留所有字段和方法
+-keep class com.sword.atlas.core.model.** { *; }
+
+# 保留所有枚举类
+-keepclassmembers enum com.sword.atlas.core.model.** {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+# 保留泛型信息
+-keepattributes Signature
+
+# 保留注解
+-keepattributes *Annotation*
+
+# 保留Kotlin元数据
+-keep class kotlin.Metadata { *; }
+
+# 保留密封类（Sealed Class）
+-keep class com.sword.atlas.core.model.Result { *; }
+-keep class com.sword.atlas.core.model.Result$* { *; }
+-keep class com.sword.atlas.core.model.UiState { *; }
+-keep class com.sword.atlas.core.model.UiState$* { *; }
+
+# 保留数据类的copy方法和component方法
+-keepclassmembers class com.sword.atlas.core.model.** {
+    public ** copy(...);
+    public ** component*();
+}
+
+# End of content from C:\Users\cairong\work\prcatice\Atlas\core-model\build\intermediates\consumer_proguard_dir\release\exportReleaseConsumerProguardFiles\lib0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\ffd22e5c547523e7aa3b99850a7a53f3\transformed\material-1.13.0\proguard.txt
+# Copyright (C) 2015 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# CoordinatorLayout resolves the behaviors of its child components with reflection.
+-keep public class * extends androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior {
+    public <init>(android.content.Context, android.util.AttributeSet);
+    public <init>();
+}
+
+# Make sure we keep annotations for CoordinatorLayout's DefaultBehavior
+-keepattributes RuntimeVisible*Annotation*
+
+# Copyright (C) 2018 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# AppCompatViewInflater reads the viewInflaterClass theme attribute which then
+# reflectively instantiates MaterialComponentsViewInflater using the no-argument
+# constructor. We only need to keep this constructor and the class name if
+# AppCompatViewInflater is also being kept.
+-if class androidx.appcompat.app.AppCompatViewInflater
+-keep class com.google.android.material.theme.MaterialComponentsViewInflater {
+    <init>();
+}
+
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\ffd22e5c547523e7aa3b99850a7a53f3\transformed\material-1.13.0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\6ce2be25b1689bf7bef46084a68e4eac\transformed\appcompat-1.7.1\proguard.txt
+# Copyright (C) 2018 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Never inline methods, but allow shrinking and obfuscation.
+-keepclassmembernames,allowobfuscation,allowshrinking class androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl* {
+  <methods>;
+}
+
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\6ce2be25b1689bf7bef46084a68e4eac\transformed\appcompat-1.7.1\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\1f236cc524b8b150388e190f641484e4\transformed\hilt-android-2.51\proguard.txt
+# Keep for the reflective cast done in EntryPoints.
+# See b/183070411#comment4 for more info.
+-keep,allowobfuscation,allowshrinking @dagger.hilt.EntryPoint class *# Keep for the reflective cast done in EntryPoints.
+# See b/183070411#comment4 for more info.
+-keep,allowobfuscation,allowshrinking @dagger.hilt.android.EarlyEntryPoint class *# Keep for the reflective cast done in EntryPoints.
+# See b/183070411#comment4 for more info.
+-keep,allowobfuscation,allowshrinking @dagger.hilt.internal.ComponentEntryPoint class *
+-keep,allowobfuscation,allowshrinking @dagger.hilt.internal.GeneratedEntryPoint class *
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\1f236cc524b8b150388e190f641484e4\transformed\hilt-android-2.51\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\7b15c9c672866bed9dee46700882071c\transformed\recyclerview-1.4.0\proguard.txt
+# Copyright (C) 2015 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# When layoutManager xml attribute is used, RecyclerView inflates
+#LayoutManagers' constructors using reflection.
+-keep public class * extends androidx.recyclerview.widget.RecyclerView$LayoutManager {
+    public <init>(android.content.Context, android.util.AttributeSet, int, int);
+    public <init>();
+}
+
+-keepclassmembers class androidx.recyclerview.widget.RecyclerView {
+    public void suppressLayout(boolean);
+    public boolean isLayoutSuppressed();
+}
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\7b15c9c672866bed9dee46700882071c\transformed\recyclerview-1.4.0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\3a61fcc9835777a8fed83e909d50968e\transformed\fragment-1.8.7\proguard.txt
+# Copyright (C) 2020 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# The default FragmentFactory creates Fragment instances using reflection
+-if public class ** extends androidx.fragment.app.Fragment
+-keepclasseswithmembers,allowobfuscation public class <1> {
+    public <init>();
+}
+
+# FragmentTransition will reflectively lookup:
+# androidx.transition.FragmentTransitionSupport
+# We should ensure that we keep the constructor if the code using this is alive
+-if class androidx.fragment.app.FragmentTransition {
+   private static androidx.fragment.app.FragmentTransitionImpl resolveSupportImpl();
+}
+-keep class androidx.transition.FragmentTransitionSupport {
+    public <init>();
+}
+
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\3a61fcc9835777a8fed83e909d50968e\transformed\fragment-1.8.7\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\4d8ff041f5e2c50e8b8341c9fd765294\transformed\coordinatorlayout-1.1.0\proguard.txt
+# Copyright (C) 2016 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# CoordinatorLayout resolves the behaviors of its child components with reflection.
+-keep public class * extends androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior {
+    public <init>(android.content.Context, android.util.AttributeSet);
+    public <init>();
+}
+
+# Make sure we keep annotations for CoordinatorLayout's DefaultBehavior and ViewPager's DecorView
+-keepattributes *Annotation*
+
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\4d8ff041f5e2c50e8b8341c9fd765294\transformed\coordinatorlayout-1.1.0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\89d292efb9b49db67a62173392e02a92\transformed\transition-1.5.0\proguard.txt
+# Copyright (C) 2017 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Keep a field in transition that is used to keep a reference to weakly-referenced object
+-keepclassmembers class androidx.transition.ChangeBounds$* extends android.animation.AnimatorListenerAdapter {
+  androidx.transition.ChangeBounds$ViewBounds mViewBounds;
+}
+
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\89d292efb9b49db67a62173392e02a92\transformed\transition-1.5.0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\435a45f291d2718f41877a6cbb9bb330\transformed\dynamicanimation-1.1.0\proguard.txt
+# Intentionally empty proguard rules to indicate this library is safe to shrink
+
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\435a45f291d2718f41877a6cbb9bb330\transformed\dynamicanimation-1.1.0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\31c0ddfb24cd7b78c2b5f037db189b94\transformed\vectordrawable-animated-1.1.0\proguard.txt
+# Copyright (C) 2016 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# keep setters in VectorDrawables so that animations can still work.
+-keepclassmembers class androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$* {
+   void set*(***);
+   *** get*();
+}
+
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\31c0ddfb24cd7b78c2b5f037db189b94\transformed\vectordrawable-animated-1.1.0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\ad9b52df49c8f9f0e08cf9e5c7da09d9\transformed\core-1.17.0\proguard.txt
+# Never inline methods, but allow shrinking and obfuscation.
+-keepclassmembernames,allowobfuscation,allowshrinking class androidx.core.view.ViewCompat$Api* {
+  <methods>;
+}
+-keepclassmembernames,allowobfuscation,allowshrinking class androidx.core.view.WindowInsetsCompat$*Impl* {
+  <methods>;
+}
+-keepclassmembernames,allowobfuscation,allowshrinking class androidx.core.app.NotificationCompat$*$Api*Impl {
+  <methods>;
+}
+-keepclassmembernames,allowobfuscation,allowshrinking class androidx.core.os.UserHandleCompat$Api*Impl {
+  <methods>;
+}
+-keepclassmembernames,allowobfuscation,allowshrinking class androidx.core.widget.EdgeEffectCompat$Api*Impl {
+  <methods>;
+}
+
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\ad9b52df49c8f9f0e08cf9e5c7da09d9\transformed\core-1.17.0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\fdaefd59abd6d8f5bb9043c5c087fedc\transformed\activity-ktx-1.11.0\proguard.txt
+# Intentionally empty proguard rules to indicate this library is safe to shrink
+
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\fdaefd59abd6d8f5bb9043c5c087fedc\transformed\activity-ktx-1.11.0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\9d910a046d3d5f51955ee9cbe55a8bfe\transformed\activity-1.11.0\proguard.txt
+# Intentionally empty proguard rules to indicate this library is safe to shrink
+
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\9d910a046d3d5f51955ee9cbe55a8bfe\transformed\activity-1.11.0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\1269c243239b6b6c2de03c306f9db47f\transformed\savedstate-1.2.1\proguard.txt
+# Copyright (C) 2019 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+-keepclassmembers,allowobfuscation class * implements androidx.savedstate.SavedStateRegistry$AutoRecreated {
+    <init>();
+}
+
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\1269c243239b6b6c2de03c306f9db47f\transformed\savedstate-1.2.1\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\a7f6a7ef93eea1891f355b5e9aca3ee2\transformed\lifecycle-runtime-release\proguard.txt
+-keepattributes AnnotationDefault,
+                RuntimeVisibleAnnotations,
+                RuntimeVisibleParameterAnnotations,
+                RuntimeVisibleTypeAnnotations
+
+-keepclassmembers enum androidx.lifecycle.Lifecycle$Event {
+    <fields>;
+}
+
+-keep class * implements androidx.lifecycle.GeneratedAdapter {
+    <init>(...);
+}
+
+-keepclassmembers class ** {
+    @androidx.lifecycle.OnLifecycleEvent *;
+}
+
+# The deprecated `android.app.Fragment` creates `Fragment` instances using reflection.
+# See: b/338958225, b/341537875
+-keepclasseswithmembers,allowobfuscation public class androidx.lifecycle.ReportFragment {
+    public <init>();
+}
+
+# this rule is need to work properly when app is compiled with api 28, see b/142778206
+# Also this rule prevents registerIn from being inlined.
+-keepclassmembers class androidx.lifecycle.ReportFragment$LifecycleCallbacks { *; }
+
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\a7f6a7ef93eea1891f355b5e9aca3ee2\transformed\lifecycle-runtime-release\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\f531f83ad54074bbbcdce1ef89503b17\transformed\lifecycle-viewmodel-release\proguard.txt
+-keepclassmembers,allowobfuscation class * extends androidx.lifecycle.ViewModel {
+    <init>();
+}
+
+-keepclassmembers,allowobfuscation class * extends androidx.lifecycle.AndroidViewModel {
+    <init>(android.app.Application);
+}
+
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\f531f83ad54074bbbcdce1ef89503b17\transformed\lifecycle-viewmodel-release\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\fd296d551bf8731233d58ea45a8b3ada\transformed\lifecycle-process-2.8.7\proguard.txt
+# this rule is need to work properly when app is compiled with api 28, see b/142778206
+-keepclassmembers class * extends androidx.lifecycle.EmptyActivityLifecycleCallbacks { *; }
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\fd296d551bf8731233d58ea45a8b3ada\transformed\lifecycle-process-2.8.7\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\f2f7d4afb020d8c455f1a0e398f6350e\transformed\lifecycle-viewmodel-savedstate-2.8.7\proguard.txt
+-keepclassmembers,allowobfuscation class * extends androidx.lifecycle.ViewModel {
+    <init>(androidx.lifecycle.SavedStateHandle);
+}
+
+-keepclassmembers,allowobfuscation class * extends androidx.lifecycle.AndroidViewModel {
+    <init>(android.app.Application,androidx.lifecycle.SavedStateHandle);
+}
+
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\f2f7d4afb020d8c455f1a0e398f6350e\transformed\lifecycle-viewmodel-savedstate-2.8.7\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\08775890cda99f0f2c58eeb391d9acaf\transformed\core-ktx-1.17.0\proguard.txt
+# Intentionally empty proguard rules to indicate this library is safe to shrink
+
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\08775890cda99f0f2c58eeb391d9acaf\transformed\core-ktx-1.17.0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\59aed9b4e9bc5f0a336172373c1d72ba\transformed\room-runtime-2.6.1\proguard.txt
+-keep class * extends androidx.room.RoomDatabase
+-dontwarn androidx.room.paging.**
+-dontwarn androidx.lifecycle.LiveData
+
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\59aed9b4e9bc5f0a336172373c1d72ba\transformed\room-runtime-2.6.1\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\910afb4c46a96c849ece2d7976faaa71\transformed\rules\lib\META-INF\com.android.tools\r8\coroutines.pro
+# When editing this file, update the following files as well:
+# - META-INF/proguard/coroutines.pro
+# - META-INF/com.android.tools/proguard/coroutines.pro
+
+# Most of volatile fields are updated with AFU and should not be mangled
+-keepclassmembers class kotlinx.coroutines.** {
+    volatile <fields>;
+}
+
+# Same story for the standard library's SafeContinuation that also uses AtomicReferenceFieldUpdater
+-keepclassmembers class kotlin.coroutines.SafeContinuation {
+    volatile <fields>;
+}
+
+# These classes are only required by kotlinx.coroutines.debug.AgentPremain, which is only loaded when
+# kotlinx-coroutines-core is used as a Java agent, so these are not needed in contexts where ProGuard is used.
+-dontwarn java.lang.instrument.ClassFileTransformer
+-dontwarn sun.misc.SignalHandler
+-dontwarn java.lang.instrument.Instrumentation
+-dontwarn sun.misc.Signal
+
+# Only used in `kotlinx.coroutines.internal.ExceptionsConstructor`.
+# The case when it is not available is hidden in a `try`-`catch`, as well as a check for Android.
+-dontwarn java.lang.ClassValue
+
+# An annotation used for build tooling, won't be directly accessed.
+-dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\910afb4c46a96c849ece2d7976faaa71\transformed\rules\lib\META-INF\com.android.tools\r8\coroutines.pro
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\300a7f13d560cd418727cceb9f83c1e9\transformed\rules\lib\META-INF\com.android.tools\r8-from-1.6.0\coroutines.pro
+# Allow R8 to optimize away the FastServiceLoader.
+# Together with ServiceLoader optimization in R8
+# this results in direct instantiation when loading Dispatchers.Main
+-assumenosideeffects class kotlinx.coroutines.internal.MainDispatcherLoader {
+    boolean FAST_SERVICE_LOADER_ENABLED return false;
+}
+
+-assumenosideeffects class kotlinx.coroutines.internal.FastServiceLoaderKt {
+    boolean ANDROID_DETECTED return true;
+}
+
+# Disable support for "Missing Main Dispatcher", since we always have Android main dispatcher
+-assumenosideeffects class kotlinx.coroutines.internal.MainDispatchersKt {
+    boolean SUPPORT_MISSING return false;
+}
+
+# Statically turn off all debugging facilities and assertions
+-assumenosideeffects class kotlinx.coroutines.DebugKt {
+    boolean getASSERTIONS_ENABLED() return false;
+    boolean getDEBUG() return false;
+    boolean getRECOVER_STACK_TRACES() return false;
+}
+
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\300a7f13d560cd418727cceb9f83c1e9\transformed\rules\lib\META-INF\com.android.tools\r8-from-1.6.0\coroutines.pro
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\e71fe19a676293352da9e702f1d4b489\transformed\startup-runtime-1.1.1\proguard.txt
+# It's important that we preserve initializer names, given they are used in the AndroidManifest.xml.
+-keepnames class * extends androidx.startup.Initializer
+
+# These Proguard rules ensures that ComponentInitializers are are neither shrunk nor obfuscated,
+# and are a part of the primary dex file. This is because they are discovered and instantiated
+# during application startup.
+-keep class * extends androidx.startup.Initializer {
+    # Keep the public no-argument constructor while allowing other methods to be optimized.
+    <init>();
+}
+
+-assumenosideeffects class androidx.startup.StartupLogger { public static <methods>; }
+
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\e71fe19a676293352da9e702f1d4b489\transformed\startup-runtime-1.1.1\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\55a5d091b2dfb63b4938769b9a06afe2\transformed\versionedparcelable-1.1.1\proguard.txt
+-keep class * implements androidx.versionedparcelable.VersionedParcelable
+-keep public class android.support.**Parcelizer { *; }
+-keep public class androidx.**Parcelizer { *; }
+-keep public class androidx.versionedparcelable.ParcelImpl
+
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\55a5d091b2dfb63b4938769b9a06afe2\transformed\versionedparcelable-1.1.1\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\c48f590de6b8f8a6d022774b3e7a542c\transformed\rules\lib\META-INF\proguard\androidx-annotations.pro
+-keep,allowobfuscation @interface androidx.annotation.Keep
+-keep @androidx.annotation.Keep class * {*;}
+
+-keepclasseswithmembers class * {
+    @androidx.annotation.Keep <methods>;
+}
+
+-keepclasseswithmembers class * {
+    @androidx.annotation.Keep <fields>;
+}
+
+-keepclasseswithmembers class * {
+    @androidx.annotation.Keep <init>(...);
+}
+
+-keepclassmembers,allowobfuscation class * {
+  @androidx.annotation.DoNotInline <methods>;
+}
+
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\c48f590de6b8f8a6d022774b3e7a542c\transformed\rules\lib\META-INF\proguard\androidx-annotations.pro
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\1b864193a3d6dc79fc4e4a869c698fe9\transformed\core-viewtree-1.0.0\proguard.txt
+# Intentionally empty proguard rules to indicate this library is safe to shrink
+
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\1b864193a3d6dc79fc4e4a869c698fe9\transformed\core-viewtree-1.0.0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\966384f62ae3458ce145e4e360390fc5\transformed\rules\lib\META-INF\proguard\retrofit2.pro
+# Retrofit does reflection on generic parameters. InnerClasses is required to use Signature and
+# EnclosingMethod is required to use InnerClasses.
+-keepattributes Signature, InnerClasses, EnclosingMethod
+
+# Retrofit does reflection on method and parameter annotations.
+-keepattributes RuntimeVisibleAnnotations, RuntimeVisibleParameterAnnotations
+
+# Keep annotation default values (e.g., retrofit2.http.Field.encoded).
+-keepattributes AnnotationDefault
+
+# Retain service method parameters when optimizing.
+-keepclassmembers,allowshrinking,allowobfuscation interface * {
+    @retrofit2.http.* <methods>;
+}
+
+# Ignore annotation used for build tooling.
+-dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
+
+# Ignore JSR 305 annotations for embedding nullability information.
+-dontwarn javax.annotation.**
+
+# Guarded by a NoClassDefFoundError try/catch and only used when on the classpath.
+-dontwarn kotlin.Unit
+
+# Top-level functions that can only be used by Kotlin.
+-dontwarn retrofit2.KotlinExtensions
+-dontwarn retrofit2.KotlinExtensions$*
+
+# With R8 full mode, it sees no subtypes of Retrofit interfaces since they are created with a Proxy
+# and replaces all potential values with null. Explicitly keeping the interfaces prevents this.
+-if interface * { @retrofit2.http.* <methods>; }
+-keep,allowobfuscation interface <1>
+
+# Keep inherited services.
+-if interface * { @retrofit2.http.* <methods>; }
+-keep,allowobfuscation interface * extends <1>
+
+# With R8 full mode generic signatures are stripped for classes that are not
+# kept. Suspend functions are wrapped in continuations where the type argument
+# is used.
+-keep,allowobfuscation,allowshrinking class kotlin.coroutines.Continuation
+
+# R8 full mode strips generic signatures from return types if not kept.
+-if interface * { @retrofit2.http.* public *** *(...); }
+-keep,allowoptimization,allowshrinking,allowobfuscation class <3>
+
+# With R8 full mode generic signatures are stripped for classes that are not kept.
+-keep,allowobfuscation,allowshrinking class retrofit2.Response
+
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\966384f62ae3458ce145e4e360390fc5\transformed\rules\lib\META-INF\proguard\retrofit2.pro
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\58af5a1e9a75e4e6e089b92e7f95800e\transformed\rules\lib\META-INF\proguard\okhttp3.pro
+# JSR 305 annotations are for embedding nullability information.
+-dontwarn javax.annotation.**
+
+# A resource is loaded with a relative path so the package of this class must be preserved.
+-keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
+
+# Animal Sniffer compileOnly dependency to ensure APIs are compatible with older versions of Java.
+-dontwarn org.codehaus.mojo.animal_sniffer.*
+
+# OkHttp platform used only on JVM and when Conscrypt and other security providers are available.
+-dontwarn okhttp3.internal.platform.**
+-dontwarn org.conscrypt.**
+-dontwarn org.bouncycastle.**
+-dontwarn org.openjsse.**
+
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\58af5a1e9a75e4e6e089b92e7f95800e\transformed\rules\lib\META-INF\proguard\okhttp3.pro
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\6825403f9562f1330ddbb16810d4c419\transformed\rules\lib\META-INF\proguard\gson.pro
+### Gson ProGuard and R8 rules which are relevant for all users
+### This file is automatically recognized by ProGuard and R8, see https://developer.android.com/build/shrink-code#configuration-files
+###
+### IMPORTANT:
+### - These rules are additive; don't include anything here which is not specific to Gson (such as completely
+###   disabling obfuscation for all classes); the user would be unable to disable that then
+### - These rules are not complete; users will most likely have to add additional rules for their specific
+###   classes, for example to disable obfuscation for certain fields or to keep no-args constructors
+###
+
+# Keep generic signatures; needed for correct type resolution
+-keepattributes Signature
+
+# Keep Gson annotations
+# Note: Cannot perform finer selection here to only cover Gson annotations, see also https://stackoverflow.com/q/47515093
+-keepattributes RuntimeVisibleAnnotations,AnnotationDefault
+
+### The following rules are needed for R8 in "full mode" which only adheres to `-keepattribtues` if
+### the corresponding class or field is matches by a `-keep` rule as well, see
+### https://r8.googlesource.com/r8/+/refs/heads/main/compatibility-faq.md#r8-full-mode
+
+# Keep class TypeToken (respectively its generic signature) if present
+-if class com.google.gson.reflect.TypeToken
+-keep,allowobfuscation class com.google.gson.reflect.TypeToken
+
+# Keep any (anonymous) classes extending TypeToken
+-keep,allowobfuscation class * extends com.google.gson.reflect.TypeToken
+
+# Keep classes with @JsonAdapter annotation
+-keep,allowobfuscation,allowoptimization @com.google.gson.annotations.JsonAdapter class *
+
+# Keep fields with any other Gson annotation
+# Also allow obfuscation, assuming that users will additionally use @SerializedName or
+# other means to preserve the field names
+-keepclassmembers,allowobfuscation class * {
+  @com.google.gson.annotations.Expose <fields>;
+  @com.google.gson.annotations.JsonAdapter <fields>;
+  @com.google.gson.annotations.Since <fields>;
+  @com.google.gson.annotations.Until <fields>;
+}
+
+# Keep no-args constructor of classes which can be used with @JsonAdapter
+# By default their no-args constructor is invoked to create an adapter instance
+-keepclassmembers class * extends com.google.gson.TypeAdapter {
+  <init>();
+}
+-keepclassmembers class * implements com.google.gson.TypeAdapterFactory {
+  <init>();
+}
+-keepclassmembers class * implements com.google.gson.JsonSerializer {
+  <init>();
+}
+-keepclassmembers class * implements com.google.gson.JsonDeserializer {
+  <init>();
+}
+
+# Keep fields annotated with @SerializedName for classes which are referenced.
+# If classes with fields annotated with @SerializedName have a no-args
+# constructor keep that as well. Based on
+# https://issuetracker.google.com/issues/150189783#comment11.
+# See also https://github.com/google/gson/pull/2420#discussion_r1241813541
+# for a more detailed explanation.
+-if class *
+-keepclasseswithmembers,allowobfuscation class <1> {
+  @com.google.gson.annotations.SerializedName <fields>;
+}
+-if class * {
+  @com.google.gson.annotations.SerializedName <fields>;
+}
+-keepclassmembers,allowobfuscation,allowoptimization class <1> {
+  <init>();
+}
+
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\6825403f9562f1330ddbb16810d4c419\transformed\rules\lib\META-INF\proguard\gson.pro
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\fa0310442ae291a6b4e270318c78f000\transformed\rules\lib\META-INF\com.android.tools\r8\r8.pro
+-identifiernamestring @dagger.internal.IdentifierNameString class ** {
+    static java.lang.String *;
+}
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\fa0310442ae291a6b4e270318c78f000\transformed\rules\lib\META-INF\com.android.tools\r8\r8.pro
+# The proguard configuration file for the following section is <unknown>
+
+# End of content from <unknown>

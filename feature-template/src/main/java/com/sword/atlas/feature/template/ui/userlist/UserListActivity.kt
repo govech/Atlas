@@ -15,16 +15,15 @@ class UserListActivity : BaseActivity() {
     
     private lateinit var binding: ActivityUserListBinding
     
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun getLayoutId(): Int = R.layout.activity_user_list
+    
+    override fun initView() {
         binding = ActivityUserListBinding.inflate(layoutInflater)
         setContentView(binding.root)
         
         // 添加Fragment
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, UserListFragment())
-                .commit()
-        }
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, UserListFragment())
+            .commit()
     }
 }
