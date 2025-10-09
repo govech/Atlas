@@ -52,6 +52,9 @@ dependencies {
     // AndroidX Core
     implementation(libs.androidx.core.ktx)
     
+    // AndroidX Security (for encrypted storage)
+    implementation("androidx.security:security-crypto:1.1.0-alpha06")
+    
     // Retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
@@ -75,6 +78,8 @@ dependencies {
     testImplementation(libs.junit)
     testImplementation(libs.mockk)
     testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation("app.cash.turbine:turbine:1.0.0")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation("com.squareup.okhttp3:mockwebserver:4.12.0")
 }
