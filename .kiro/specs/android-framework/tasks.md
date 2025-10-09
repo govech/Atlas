@@ -403,36 +403,53 @@
     - 添加应用图标到mipmap目录
     - _Requirements: 8.9_
 
-- [ ] 9. 配置代码混淆
-  - [ ] 9.1 配置app模块混淆规则
+- [x] 9. 配置代码混淆
+
+
+
+
+
+
+  - [x] 9.1 配置app模块混淆规则
+
     - 创建proguard-rules.pro文件
     - 添加基础混淆配置
     - 保留反射使用的类
     - 保留序列化类
     - _Requirements: 9.1, 9.2, 9.3_
   
-  - [ ] 9.2 配置core-model模块混淆规则
+  - [x] 9.2 配置core-model模块混淆规则
+
+
     - 创建consumer-rules.pro文件
     - 保留所有数据模型类
     - _Requirements: 9.4_
   
-  - [ ] 9.3 配置core-network模块混淆规则
+  - [x] 9.3 配置core-network模块混淆规则
+
+
     - 创建consumer-rules.pro文件
     - 保留Retrofit接口和模型
     - 添加Retrofit、OkHttp、Gson混淆规则
     - _Requirements: 9.4, 9.5_
   
-  - [ ] 9.4 配置core-database模块混淆规则
+  - [x] 9.4 配置core-database模块混淆规则
+
+
     - 创建consumer-rules.pro文件
     - 保留Room实体类
     - 添加Room混淆规则
     - _Requirements: 9.4, 9.5_
   
-  - [ ] 9.5 添加Hilt混淆规则
+  - [x] 9.5 添加Hilt混淆规则
+
+
     - 在app模块proguard-rules.pro中添加Hilt规则
     - _Requirements: 9.5_
   
-  - [ ] 9.6 配置R8优化
+  - [x] 9.6 配置R8优化
+
+
     - 启用代码优化
     - 启用资源优化
     - _Requirements: 9.6_

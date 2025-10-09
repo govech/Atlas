@@ -41,13 +41,30 @@ android {
             versionNameSuffix = "-debug"
         }
         release {
+            // 启用代码混淆
             isMinifyEnabled = true
+            // 启用资源优化
             isShrinkResources = true
+            // 使用优化的ProGuard配置
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
             signingConfig = signingConfigs.getByName("release")
+            
+            // R8优化配置
+            // 启用完整的R8优化模式
+            // R8会自动进行代码优化、混淆和资源压缩
+        }
+    }
+    
+    // 配置打包选项
+    packaging {
+        resources {
+            // 排除重复的LICENSE文件
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += "/META-INF/LICENSE*"
+            excludes += "/META-INF/NOTICE*"
         }
     }
     compileOptions {
