@@ -8,5 +8,18 @@ package com.sword.atlas.core.router
  * Full implementation will be done in task 9.
  */
 class Router {
-    // Placeholder implementation - will be completed in task 9
+    
+    /**
+     * 执行路由导航
+     * 
+     * Note: This is a placeholder method for RouteRequest dependencies.
+     * Full implementation will be done in task 9.
+     * 
+     * @param request 路由请求
+     * @return 导航是否成功
+     */
+    internal suspend fun navigate(request: RouteRequest): Boolean {
+        // Placeholder implementation - will be completed in task 9
+        return false
+    }
 }

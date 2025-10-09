@@ -170,7 +170,14 @@
     - _Requirements: 3.6, 3.7, 3.8_
 
 - [ ] 8. 实现路由请求构建器
-  - [ ] 8.1 创建RouteRequest核心类
+
+
+
+
+
+  - [x] 8.1 创建RouteRequest核心类
+
+
     - 实现RouteRequest类，包含context、router等字段
     - 实现to方法设置目标路径
     - 实现withString、withInt、withLong等参数方法
@@ -183,7 +190,9 @@
     - 实现withCallback设置导航回调方法
     - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7_
 
-  - [ ] 8.2 实现路由执行方法
+  - [x] 8.2 实现路由执行方法
+
+
     - 实现go方法异步执行路由导航
     - 实现goSync方法同步执行路由导航
     - 添加路径验证逻辑
