@@ -86,39 +86,56 @@
     - 创建AppConstants对象，定义应用级常量
     - _Requirements: 5.15_
 
-- [ ] 4. 创建core-network模块
-  - [ ] 4.1 创建模块结构和build.gradle.kts
+- [x] 4. 创建core-network模块
+
+
+
+
+
+  - [x] 4.1 创建模块结构和build.gradle.kts
+
+
     - 创建core-network模块目录结构
     - 配置build.gradle.kts，依赖core-model和core-common
     - 添加Retrofit、OkHttp、Gson依赖
     - 设置包名为`com.sword.atlas.core.network`
     - _Requirements: 3.1_
   
-  - [ ] 4.2 实现Retrofit客户端
+  - [x] 4.2 实现Retrofit客户端
+
+
     - 实现RetrofitClient单例对象
     - 配置OkHttpClient，设置超时时间（连接15s、读取30s、写入30s）
     - 添加Gson转换器
     - 支持多BaseUrl切换功能
     - _Requirements: 3.1, 3.2, 3.6_
   
-  - [ ] 4.3 实现OkHttp拦截器
+  - [x] 4.3 实现OkHttp拦截器
+
+
     - 实现LoggingInterceptor，在Debug模式输出请求和响应日志
     - 实现TokenInterceptor，自动添加Authorization请求头
     - 实现SignInterceptor，为请求添加签名参数
     - _Requirements: 3.3, 3.4, 3.5_
   
-  - [ ] 4.4 实现Flow扩展函数
+  - [x] 4.4 实现Flow扩展函数
+
+
     - 实现flowRequest扩展函数，统一网络请求包装
     - 实现异常捕获和转换逻辑
     - 将网络异常映射到ErrorCode
     - _Requirements: 3.7, 3.8, 3.9_
   
-  - [ ] 4.5 实现下载上传工具
+  - [x] 4.5 实现下载上传工具
+
+
     - 实现DownloadManager，支持下载进度监听
     - 实现UploadManager，支持上传进度监听
     - _Requirements: 3.10, 3.11_
   
-  - [ ] 4.6 实现Hilt依赖注入配置
+  - [x] 4.6 实现Hilt依赖注入配置
+
+
     - 创建NetworkModule，使用@Module和@InstallIn注解
     - 提供OkHttpClient单例
     - 提供Retrofit单例
