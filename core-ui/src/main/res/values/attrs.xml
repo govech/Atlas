@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- EmptyView 自定义属性 -->
+    <declare-styleable name="EmptyView">
+        <attr name="emptyMessage" format="string" />
+        <attr name="emptyIcon" format="reference" />
+    </declare-styleable>
+
+    <!-- ErrorView 自定义属性 -->
+    <declare-styleable name="ErrorView">
+        <attr name="errorMessage" format="string" />
+        <attr name="errorIcon" format="reference" />
+        <attr name="showRetryButton" format="boolean" />
+    </declare-styleable>
+
+    <!-- TitleBar 自定义属性 -->
+    <declare-styleable name="TitleBar">
+        <attr name="titleText" format="string" />
+        <attr name="leftIcon" format="reference" />
+        <attr name="rightIcon" format="reference" />
+        <attr name="leftText" format="string" />
+        <attr name="rightText" format="string" />
+        <attr name="showLeftButton" format="boolean" />
+        <attr name="showRightButton" format="boolean" />
+    </declare-styleable>
+</resources>

@@ -198,8 +198,15 @@
     - _Requirements: 4.9_
 
 
-- [ ] 6. 创建core-ui模块
-  - [ ] 6.1 创建模块结构和build.gradle.kts
+- [x] 6. 创建core-ui模块
+
+
+
+
+
+
+  - [x] 6.1 创建模块结构和build.gradle.kts
+
     - 创建core-ui模块目录结构
     - 配置build.gradle.kts，依赖core-model和core-common
     - 启用ViewBinding
@@ -207,33 +214,43 @@
     - 设置包名为`com.sword.atlas.core.ui`
     - _Requirements: 6.1, 6.5_
   
-  - [ ] 6.2 实现Activity基类
+  - [x] 6.2 实现Activity基类
+
+
     - 实现BaseActivity，提供基础生命周期管理
     - 实现BaseVMActivity，支持ViewModel和ViewBinding
     - 使用@AndroidEntryPoint注解支持Hilt
     - 实现loading和error状态的观察
     - _Requirements: 6.1, 6.2, 6.3, 6.4_
   
-  - [ ] 6.3 实现Fragment基类
+
+  - [x] 6.3 实现Fragment基类
+
     - 实现BaseFragment，提供基础生命周期管理
     - 实现BaseVMFragment，支持ViewModel和ViewBinding
     - 使用viewLifecycleOwner观察数据
     - _Requirements: 6.1, 6.2, 6.3, 6.4_
   
-  - [ ] 6.4 实现ViewBinding扩展函数
+
+  - [x] 6.4 实现ViewBinding扩展函数
+
     - 实现Activity的viewBinding扩展函数
     - 实现Fragment的viewBinding扩展函数
     - 简化ViewBinding初始化代码
     - _Requirements: 6.6, 6.7_
   
-  - [ ] 6.5 实现通用Dialog
+
+  - [x] 6.5 实现通用Dialog
+
     - 实现LoadingDialog，支持取消和自定义样式
     - 创建layout_loading_dialog.xml布局文件
     - 实现CommonDialog，支持标题、消息、按钮配置
     - 创建layout_common_dialog.xml布局文件
     - _Requirements: 6.8, 6.9_
   
-  - [ ] 6.6 实现通用状态View
+  - [x] 6.6 实现通用状态View
+
+
     - 实现EmptyView，支持自定义图标和文字
     - 创建layout_empty_view.xml布局文件
     - 实现ErrorView，支持重试按钮和错误信息
@@ -241,19 +258,27 @@
     - 实现StateLayout，响应UiState变化自动切换状态
     - _Requirements: 6.10, 6.11, 6.12_
   
-  - [ ] 6.7 实现RecyclerView组件
+
+
+  - [x] 6.7 实现RecyclerView组件
+
     - 实现BaseAdapter，使用DiffUtil提升性能
     - 实现BaseViewHolder抽象类
     - 实现MultiTypeAdapter，支持多ViewType
     - _Requirements: 6.13, 6.14, 6.15_
   
-  - [ ] 6.8 实现自定义控件
+
+  - [x] 6.8 实现自定义控件
+
     - 实现TitleBar，支持左右按钮和标题配置
     - 创建layout_title_bar.xml布局文件
     - 实现LoadingButton，支持加载状态显示
     - _Requirements: 6.16, 6.17_
   
-  - [ ] 6.9 创建资源文件
+
+
+  - [x] 6.9 创建资源文件
+
     - 创建colors.xml，定义主题颜色
     - 创建dimens.xml，定义尺寸值
     - 创建strings.xml，定义字符串资源

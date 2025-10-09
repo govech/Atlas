@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="app_name">Atlas</string>
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+    <string name="ok">好的</string>
+    <string name="retry">重试</string>
+    <string name="loading">加载中…</string>
+    <string name="save">保存</string>
+    <string name="delete">删除</string>
+    <string name="edit">编辑</string>
+    <string name="submit">提交</string>
+    <string name="back">返回</string>
+    <string name="next">下一步</string>
+    <string name="finish">完成</string>
+    <string name="close">关闭</string>
+
+    <!-- Status -->
+    <string name="success">成功</string>
+    <string name="failed">失败</string>
+    <string name="error">错误</string>
+    <string name="warning">警告</string>
+
+    <!-- Data State -->
+    <string name="no_data">暂无数据</string>
+    <string name="load_more">加载更多</string>
+    <string name="no_more_data">没有更多数据了</string>
+    <string name="loading_failed">加载失败</string>
+    <string name="refresh">刷新</string>
+
+    <!-- Network -->
+    <string name="network_error">网络连接失败</string>
+    <string name="network_timeout">请求超时</string>
+    <string name="server_error">服务器错误</string>
+
+    <!-- Content Description -->
+    <string name="empty_icon">空数据图标</string>
+    <string name="error_icon">错误图标</string>
+    <string name="left_button">左侧按钮</string>
+    <string name="right_button">右侧按钮</string>
+
+    <!-- Validation -->
+    <string name="input_empty">输入不能为空</string>
+    <string name="input_invalid">输入格式不正确</string>
+
+    <!-- Permission -->
+    <string name="permission_denied">权限被拒绝</string>
+    <string name="permission_required">需要授予权限</string>
+</resources>
