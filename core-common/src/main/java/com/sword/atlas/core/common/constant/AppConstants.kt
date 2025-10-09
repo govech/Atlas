@@ -42,35 +42,7 @@ object AppConstants {
         const val KEY_THEME = "theme"
     }
     
-    /**
-     * 网络相关常量
-     */
-    object Network {
-        /**
-         * 连接超时时间（秒）
-         */
-        const val CONNECT_TIMEOUT = 15L
-        
-        /**
-         * 读取超时时间（秒）
-         */
-        const val READ_TIMEOUT = 30L
-        
-        /**
-         * 写入超时时间（秒）
-         */
-        const val WRITE_TIMEOUT = 30L
-        
-        /**
-         * 成功响应码
-         */
-        const val SUCCESS_CODE = 200
-        
-        /**
-         * 未授权响应码
-         */
-        const val UNAUTHORIZED_CODE = 401
-    }
+
     
     /**
      * 分页相关常量

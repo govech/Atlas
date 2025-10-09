@@ -2,6 +2,7 @@ package com.sword.atlas.core.network.interceptor
 
 import com.sword.atlas.core.common.util.LogUtil
 import com.sword.atlas.core.network.BuildConfig
+import com.sword.atlas.core.network.config.NetworkConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 import okio.Buffer
@@ -35,10 +36,7 @@ class LoggingInterceptor : Interceptor {
             "pwd", "pass", "auth", "credential", "signature"
         )
         
-        /**
-         * 最大日志长度
-         */
-        private const val MAX_LOG_LENGTH = 4000
+
     }
     
     private val logLevel: LogLevel = if (BuildConfig.DEBUG) LogLevel.BODY else LogLevel.BASIC
@@ -178,8 +176,8 @@ class LoggingInterceptor : Interceptor {
      * 截断过长的日志
      */
     private fun truncateLog(log: String): String {
-        return if (log.length > MAX_LOG_LENGTH) {
-            "${log.substring(0, MAX_LOG_LENGTH)}... [TRUNCATED ${log.length - MAX_LOG_LENGTH} chars]"
+        return if (log.length > NetworkConfig.Log.MAX_LENGTH) {
+            "${log.substring(0, NetworkConfig.Log.MAX_LENGTH)}... [TRUNCATED ${log.length - NetworkConfig.Log.MAX_LENGTH} chars]"
         } else {
             log
         }

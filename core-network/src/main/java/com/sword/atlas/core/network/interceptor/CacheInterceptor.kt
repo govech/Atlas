@@ -3,6 +3,7 @@ package com.sword.atlas.core.network.interceptor
 import android.content.Context
 import com.sword.atlas.core.common.util.LogUtil
 import com.sword.atlas.core.common.util.NetworkUtil
+import com.sword.atlas.core.network.config.NetworkConfig
 import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.CacheControl
 import okhttp3.Interceptor
@@ -20,16 +21,6 @@ class CacheInterceptor @Inject constructor(
     
     companion object {
         private const val TAG = "CacheInterceptor"
-        
-        /**
-         * 在线缓存时间（秒）
-         */
-        private const val ONLINE_CACHE_TIME = 60
-        
-        /**
-         * 离线缓存时间（秒）
-         */
-        private const val OFFLINE_CACHE_TIME = 24 * 60 * 60 // 24小时
         
         /**
          * 缓存控制头
@@ -70,7 +61,7 @@ class CacheInterceptor @Inject constructor(
                 request.newBuilder()
                     .cacheControl(
                         CacheControl.Builder()
-                            .maxAge(ONLINE_CACHE_TIME, TimeUnit.SECONDS)
+                            .maxAge(NetworkConfig.Cache.ONLINE_CACHE_TIME, TimeUnit.SECONDS)
                             .build()
                     )
                     .build()
@@ -83,7 +74,7 @@ class CacheInterceptor @Inject constructor(
                     .cacheControl(
                         CacheControl.Builder()
                             .onlyIfCached()
-                            .maxStale(OFFLINE_CACHE_TIME, TimeUnit.SECONDS)
+                            .maxStale(NetworkConfig.Cache.OFFLINE_CACHE_TIME, TimeUnit.SECONDS)
                             .build()
                     )
                     .build()
@@ -108,7 +99,7 @@ class CacheInterceptor @Inject constructor(
                     .removeHeader(CACHE_CONTROL_HEADER)
                     .header(
                         CACHE_CONTROL_HEADER,
-                        "public, max-age=$ONLINE_CACHE_TIME"
+                        "public, max-age=${NetworkConfig.Cache.ONLINE_CACHE_TIME}"
                     )
                     .build()
             }
@@ -120,7 +111,7 @@ class CacheInterceptor @Inject constructor(
                     .removeHeader(CACHE_CONTROL_HEADER)
                     .header(
                         CACHE_CONTROL_HEADER,
-                        "public, only-if-cached, max-stale=$OFFLINE_CACHE_TIME"
+                        "public, only-if-cached, max-stale=${NetworkConfig.Cache.OFFLINE_CACHE_TIME}"
                     )
                     .build()
             }

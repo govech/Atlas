@@ -5,6 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.sword.atlas.core.common.constant.AppConstants
 import com.sword.atlas.core.network.BuildConfig
+import com.sword.atlas.core.network.config.NetworkConfig
 import com.sword.atlas.core.network.interceptor.CacheInterceptor
 import com.sword.atlas.core.network.interceptor.LoggingInterceptor
 import com.sword.atlas.core.network.interceptor.SignInterceptor
@@ -46,17 +47,18 @@ abstract class NetworkModule {
     companion object {
         /**
          * 提供BaseUrl
-         * 根据BuildConfig动态配置
+         * 根据BuildConfig和NetworkConfig动态配置
          */
         @Provides
         @Singleton
         @Named("baseUrl")
         fun provideBaseUrl(): String {
-            return when {
-                BuildConfig.DEBUG -> "https://api-dev.example.com/"
-                BuildConfig.BUILD_TYPE == "staging" -> "https://api-staging.example.com/"
-                else -> "https://api.example.com/"
+            val environment = when {
+                BuildConfig.DEBUG -> NetworkConfig.Environment.DEV
+                BuildConfig.BUILD_TYPE == "staging" -> NetworkConfig.Environment.STAGING
+                else -> NetworkConfig.Environment.PROD
             }
+            return NetworkConfig.getBaseUrl(environment)
         }
         
         /**
@@ -92,8 +94,7 @@ abstract class NetworkModule {
         @Provides
         @Singleton
         fun provideCache(@Named("cacheDir") cacheDir: File): Cache {
-            val cacheSize = 50L * 1024 * 1024 // 50MB
-            return Cache(cacheDir, cacheSize)
+            return Cache(cacheDir, NetworkConfig.Cache.SIZE)
         }
         
         /**
@@ -146,10 +147,11 @@ abstract class NetworkModule {
             cacheInterceptor: CacheInterceptor
         ): OkHttpClient {
             return OkHttpClient.Builder()
-                // 超时配置
-                .connectTimeout(AppConstants.Network.CONNECT_TIMEOUT, TimeUnit.SECONDS)
-                .readTimeout(AppConstants.Network.READ_TIMEOUT, TimeUnit.SECONDS)
-                .writeTimeout(AppConstants.Network.WRITE_TIMEOUT, TimeUnit.SECONDS)
+                // 超时配置 - 使用NetworkConfig
+                .connectTimeout(NetworkConfig.Timeout.CONNECT, TimeUnit.SECONDS)
+                .readTimeout(NetworkConfig.Timeout.READ, TimeUnit.SECONDS)
+                .writeTimeout(NetworkConfig.Timeout.WRITE, TimeUnit.SECONDS)
+                .callTimeout(NetworkConfig.Timeout.CALL, TimeUnit.SECONDS)
                 
                 // 重试配置
                 .retryOnConnectionFailure(true)

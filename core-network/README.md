@@ -204,18 +204,35 @@ android {
 
 ### 2. 网络配置
 
-可以通过`NetworkConfig`类调整各种网络参数：
+`NetworkConfig`类是网络模块的核心配置中心，统一管理所有网络相关参数：
 
 ```kotlin
-// 修改超时时间
-NetworkConfig.Timeout.CONNECT = 20L
+// 环境配置
+val currentEnv = NetworkConfig.getCurrentEnvironment()
+val baseUrl = NetworkConfig.getCurrentBaseUrl()
 
-// 修改重试次数
-NetworkConfig.Retry.MAX_RETRIES = 5
+// 超时配置
+val connectTimeout = NetworkConfig.Timeout.CONNECT
+val readTimeout = NetworkConfig.Timeout.READ
 
-// 修改缓存大小
-NetworkConfig.Cache.SIZE = 100L * 1024 * 1024 // 100MB
+// 重试配置
+val maxRetries = NetworkConfig.Retry.MAX_RETRIES
+val initialDelay = NetworkConfig.Retry.INITIAL_DELAY
+
+// 缓存配置
+val cacheSize = NetworkConfig.Cache.SIZE
+val onlineCacheTime = NetworkConfig.Cache.ONLINE_CACHE_TIME
+
+// 文件上传限制检查
+val isAllowed = NetworkConfig.isFileSizeAllowed(fileSize)
+val maxSizeDesc = NetworkConfig.getMaxFileSizeDescription()
 ```
+
+**配置的实际应用：**
+- `NetworkModule`使用这些配置初始化OkHttp和Retrofit
+- `CacheInterceptor`使用缓存配置管理HTTP缓存策略
+- `LoggingInterceptor`使用日志配置控制输出长度和敏感信息过滤
+- `UploadManager`和`DownloadManager`使用传输配置设置缓冲区大小
 
 ### 3. 签名配置
 

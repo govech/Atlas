@@ -1,6 +1,7 @@
 package com.sword.atlas.core.network.manager
 
 import com.sword.atlas.core.common.util.LogUtil
+import com.sword.atlas.core.network.config.NetworkConfig
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -30,7 +31,6 @@ class UploadManager(
     companion object {
         private const val TAG = "UploadManager"
         private const val DEFAULT_MEDIA_TYPE = "application/octet-stream"
-        private const val BUFFER_SIZE = 8192L
     }
     
     /**
@@ -220,7 +220,7 @@ class UploadManager(
                 var bytesUploaded = 0L
                 var read: Long
                 
-                while (source.read(sink.buffer, BUFFER_SIZE).also { read = it } != -1L) {
+                while (source.read(sink.buffer, NetworkConfig.Transfer.BUFFER_SIZE).also { read = it } != -1L) {
                     bytesUploaded += read
                     sink.flush()
                     

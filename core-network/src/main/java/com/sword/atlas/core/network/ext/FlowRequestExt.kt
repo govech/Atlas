@@ -7,6 +7,7 @@ import com.sword.atlas.core.common.util.NetworkUtil
 import com.sword.atlas.core.model.ApiResponse
 import com.sword.atlas.core.model.ErrorCode
 import com.sword.atlas.core.model.Result
+import com.sword.atlas.core.network.config.NetworkConfig
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -66,8 +67,8 @@ fun <T> flowRequest(
  */
 fun <T> flowRequestWithRetry(
     context: Context? = null,
-    maxRetries: Int = 3,
-    retryDelayMillis: Long = 1000L,
+    maxRetries: Int = NetworkConfig.Retry.MAX_RETRIES,
+    retryDelayMillis: Long = NetworkConfig.Retry.INITIAL_DELAY,
     block: suspend () -> ApiResponse<T>
 ): Flow<Result<T>> = flow {
     // 检查网络状态

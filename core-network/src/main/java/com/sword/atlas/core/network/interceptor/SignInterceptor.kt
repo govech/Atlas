@@ -1,6 +1,7 @@
 package com.sword.atlas.core.network.interceptor
 
 import com.sword.atlas.core.common.util.LogUtil
+import com.sword.atlas.core.network.config.NetworkConfig
 import com.sword.atlas.core.network.security.CryptoUtil
 import com.sword.atlas.core.network.security.SecureStorage
 import okhttp3.Interceptor
@@ -36,10 +37,7 @@ class SignInterceptor @Inject constructor(
          */
         private const val SIGN_PARAM = "sign"
         
-        /**
-         * 签名有效期（5分钟）
-         */
-        private const val SIGN_EXPIRE_TIME = 5 * 60 * 1000L
+
         
         private val UTF8 = Charset.forName("UTF-8")
     }

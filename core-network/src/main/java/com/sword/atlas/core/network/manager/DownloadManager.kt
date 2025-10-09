@@ -1,6 +1,7 @@
 package com.sword.atlas.core.network.manager
 
 import com.sword.atlas.core.common.util.LogUtil
+import com.sword.atlas.core.network.config.NetworkConfig
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -21,7 +22,6 @@ class DownloadManager(
     
     companion object {
         private const val TAG = "DownloadManager"
-        private const val BUFFER_SIZE = 8192
     }
     
     /**
@@ -94,7 +94,7 @@ class DownloadManager(
             // 写入文件
             body.byteStream().use { inputStream ->
                 FileOutputStream(destFile).use { outputStream ->
-                    val buffer = ByteArray(BUFFER_SIZE)
+                    val buffer = ByteArray(NetworkConfig.Transfer.BUFFER_SIZE.toInt())
                     var bytesRead: Int
                     
                     while (inputStream.read(buffer).also { bytesRead = it } != -1) {

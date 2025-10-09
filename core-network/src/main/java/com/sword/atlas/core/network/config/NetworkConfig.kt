@@ -91,9 +91,45 @@ object NetworkConfig {
     
     /**
      * 获取当前环境
+     * 根据系统属性或BuildConfig确定
      */
     fun getCurrentEnvironment(): Environment {
-        // 这里可以根据BuildConfig或其他配置来确定环境
-        return Environment.DEV // 默认开发环境
+        // 可以通过系统属性、BuildConfig或其他方式确定环境
+        val envProperty = System.getProperty("atlas.environment")
+        return when (envProperty?.uppercase()) {
+            "PROD", "PRODUCTION" -> Environment.PROD
+            "STAGING", "STAGE" -> Environment.STAGING
+            "TEST", "TESTING" -> Environment.TEST
+            else -> Environment.DEV // 默认开发环境
+        }
+    }
+    
+    /**
+     * 是否启用调试模式
+     */
+    fun isDebugMode(): Boolean {
+        return getCurrentEnvironment() == Environment.DEV
+    }
+    
+    /**
+     * 获取当前环境的BaseUrl
+     */
+    fun getCurrentBaseUrl(): String {
+        return getBaseUrl(getCurrentEnvironment())
+    }
+    
+    /**
+     * 根据文件大小判断是否允许上传
+     */
+    fun isFileSizeAllowed(fileSize: Long): Boolean {
+        return fileSize <= Transfer.MAX_FILE_SIZE
+    }
+    
+    /**
+     * 获取格式化的文件大小限制描述
+     */
+    fun getMaxFileSizeDescription(): String {
+        val sizeMB = Transfer.MAX_FILE_SIZE / (1024 * 1024)
+        return "${sizeMB}MB"
     }
 }
