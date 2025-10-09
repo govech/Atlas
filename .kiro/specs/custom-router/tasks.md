@@ -124,7 +124,10 @@
     - 自动注册注解中指定的拦截器
     - 添加异常处理和日志记录
     - _Requirements: 6.5, 6.6_
-- [ ] 6
+- [x] 6
+
+
+
 . 实现回调机制
   - [ ] 6.1 创建回调接口
     - 实现NavigationCallback接口，包含onSuccess、onError、onCancel方法
