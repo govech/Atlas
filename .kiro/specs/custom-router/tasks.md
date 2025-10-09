@@ -142,8 +142,14 @@
     - 实现removeCallback方法移除回调
     - _Requirements: 5.5, 5.7_
 
-- [ ] 7. 实现拦截器系统
-  - [ ] 7.1 创建拦截器接口和管理器
+- [x] 7. 实现拦截器系统
+
+
+
+
+  - [x] 7.1 创建拦截器接口和管理器
+
+
     - 实现RouteInterceptor接口，包含priority属性和intercept方法
     - 实现InterceptorManager单例类
     - 使用列表管理全局拦截器和路径拦截器
@@ -153,7 +159,9 @@
     - 按优先级排序执行拦截器
     - _Requirements: 3.1, 3.2, 3.3, 3.4, 3.5, 3.9_
 
-  - [ ] 7.2 实现内置拦截器
+  - [x] 7.2 实现内置拦截器
+
+
     - 实现LoginInterceptor登录检查拦截器
     - 实现PermissionInterceptor权限检查拦截器
     - 实现LogInterceptor日志拦截器

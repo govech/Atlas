@@ -68,10 +68,10 @@ class RouteTable @Inject constructor() {
      */
     fun validatePath(path: String) {
         if (!path.startsWith("/")) {
-            throw RouteException.invalidPath("Path must start with '/'")
+            throw RouteException.invalidPath(path, "Path must start with '/'")
         }
         if (path.contains("//")) {
-            throw RouteException.invalidPath("Path cannot contain '//'")
+            throw RouteException.invalidPath(path, "Path cannot contain '//'")
         }
     }
 }
