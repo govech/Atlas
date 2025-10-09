@@ -141,8 +141,15 @@
     - 提供Retrofit单例
     - _Requirements: 3.12_
 
-- [ ] 5. 创建core-database模块
-  - [ ] 5.1 创建模块结构和build.gradle.kts
+- [x] 5. 创建core-database模块
+
+
+
+
+
+  - [x] 5.1 创建模块结构和build.gradle.kts
+
+
     - 创建core-database模块目录结构
     - 配置build.gradle.kts，依赖core-model和core-common
     - 应用KSP插件
@@ -150,31 +157,41 @@
     - 设置包名为`com.sword.atlas.core.database`
     - _Requirements: 4.1, 4.5_
   
-  - [ ] 5.2 实现Room数据库配置
+  - [x] 5.2 实现Room数据库配置
+
+
     - 创建AppDatabase抽象类，继承RoomDatabase
     - 使用@Database注解，配置entities和version
     - 定义数据库名称常量
     - _Requirements: 4.2, 4.3_
   
-  - [ ] 5.3 实现BaseDao接口
+  - [x] 5.3 实现BaseDao接口
+
+
     - 定义BaseDao泛型接口
     - 提供insert、insertAll、update、delete方法
     - 使用@Insert、@Update、@Delete注解
     - _Requirements: 4.4, 4.5_
   
-  - [ ] 5.4 实现示例实体和DAO
+  - [x] 5.4 实现示例实体和DAO
+
+
     - 创建UserEntity，使用@Entity注解
     - 定义主键和字段，使用@PrimaryKey和@ColumnInfo注解
     - 创建UserDao接口，继承BaseDao
     - 实现getUserById、getAllUsers等查询方法，返回Flow类型
     - _Requirements: 4.6, 4.7, 4.8_
   
-  - [ ] 5.5 实现数据库迁移策略
+  - [x] 5.5 实现数据库迁移策略
+
+
     - 定义MIGRATION_1_2迁移对象
     - 编写迁移SQL脚本
     - _Requirements: 4.3, 4.4_
   
-  - [ ] 5.6 实现Hilt依赖注入配置
+  - [x] 5.6 实现Hilt依赖注入配置
+
+
     - 创建DatabaseModule，使用@Module和@InstallIn注解
     - 提供AppDatabase单例
     - 提供UserDao实例
