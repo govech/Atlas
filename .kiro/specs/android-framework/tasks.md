@@ -4,21 +4,30 @@
 
 ## 任务列表
 
-- [ ] 1. 配置Gradle依赖版本管理
+- [x] 1. 配置Gradle依赖版本管理
+
+
   - 扩展`gradle/libs.versions.toml`文件，添加所有必要的依赖版本
   - 配置Hilt、KSP、Retrofit、Room、Coroutines等库的版本
   - 更新根目录`build.gradle.kts`，添加插件配置
   - 更新`settings.gradle.kts`，声明所有模块
   - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6_
 
-- [ ] 2. 创建core-model模块
-  - [ ] 2.1 创建模块结构和build.gradle.kts
+- [x] 2. 创建core-model模块
+
+
+
+  - [x] 2.1 创建模块结构和build.gradle.kts
+
+
     - 创建core-model模块目录结构
     - 配置build.gradle.kts，应用Android Library插件
     - 设置包名为`com.sword.atlas.core.model`
     - _Requirements: 2.1, 2.6_
   
-  - [ ] 2.2 实现核心数据模型类
+  - [x] 2.2 实现核心数据模型类
+
+
     - 实现ApiResponse<T>泛型类，包含code、message、data字段
     - 实现Result<T>密封类，包含Success和Error状态
     - 实现UiState<T>密封类，包含Idle、Loading、Success、Error状态

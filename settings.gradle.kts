@@ -21,3 +21,9 @@ dependencyResolutionManagement {
 
 rootProject.name = "Atlas"
 include(":app")
+include(":core-model")
+include(":core-common")
+include(":core-network")
+include(":core-database")
+include(":core-ui")
+include(":feature-template")
