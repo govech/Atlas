@@ -199,15 +199,26 @@
     - 集成协程支持
     - _Requirements: 2.1_
 
-- [ ] 9. 实现核心路由管理器
-  - [ ] 9.1 创建Router核心类
+- [x] 9. 实现核心路由管理器
+
+
+
+
+
+
+  - [x] 9.1 创建Router核心类
+
+
+
     - 实现Router单例类，注入RouteTable和InterceptorManager
     - 实现with静态方法创建RouteRequest
     - 实现register方法注册单个路由
     - 实现registerRoutes方法批量注册路由
     - _Requirements: 1.1, 1.3, 1.6_
 
-  - [ ] 9.2 实现路由导航核心逻辑
+  - [x] 9.2 实现路由导航核心逻辑
+
+
     - 实现navigate方法执行路由导航
     - 集成拦截器链执行
     - 实现buildIntent方法构建Intent
