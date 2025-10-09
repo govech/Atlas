@@ -351,8 +351,15 @@
     - 确认无内存泄漏和ANR问题
     - _Requirements: 7.15, 7.16, 7.17, 7.18, 7.19_
 
-- [ ] 8. 配置app主应用模块
-  - [ ] 8.1 更新app模块build.gradle.kts
+- [x] 8. 配置app主应用模块
+
+
+
+
+
+  - [x] 8.1 更新app模块build.gradle.kts
+
+
     - 依赖所有core和feature模块
     - 应用Hilt插件
     - 启用ViewBinding
@@ -360,7 +367,9 @@
     - 配置ProGuard混淆规则
     - _Requirements: 8.6, 8.7, 8.8_
   
-  - [ ] 8.2 实现Application类
+  - [x] 8.2 实现Application类
+
+
     - 创建App类，继承Application
     - 使用@HiltAndroidApp注解
     - 初始化日志工具
@@ -368,20 +377,26 @@
     - 初始化其他全局配置
     - _Requirements: 8.1, 8.2_
   
-  - [ ] 8.3 实现MainActivity
+  - [x] 8.3 实现MainActivity
+
+
     - 创建MainActivity，使用@AndroidEntryPoint注解
     - 实现导航到各功能模块的逻辑
     - 创建activity_main.xml布局文件
     - _Requirements: 8.3, 8.4_
   
-  - [ ] 8.4 配置AndroidManifest.xml
+  - [x] 8.4 配置AndroidManifest.xml
+
+
     - 声明Application类
     - 声明所有Activity
     - 声明必要权限（网络、存储等）
     - 配置网络安全策略
     - _Requirements: 8.5_
   
-  - [ ] 8.5 创建应用资源文件
+  - [x] 8.5 创建应用资源文件
+
+
     - 创建strings.xml，定义应用名称等字符串
     - 创建colors.xml，定义应用主题颜色
     - 创建themes.xml，定义应用主题

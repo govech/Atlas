@@ -22,6 +22,15 @@ object LogUtil {
     private var isDebug = true
     
     /**
+     * 初始化日志工具
+     *
+     * @param debug 是否为Debug模式
+     */
+    fun init(debug: Boolean) {
+        isDebug = debug
+    }
+    
+    /**
      * 设置Debug模式
      *
      * @param debug 是否为Debug模式
