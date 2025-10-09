@@ -74,8 +74,8 @@ Atlas是一个现代化的Android开发框架，提供完整的基础设施，�
 ### 克隆项目
 
 ```bash
-git clone https://github.com/your-org/atlas-android-framework.git
-cd atlas-android-framework
+git clone https://github.com/govech/Atlas.git
+cd Atlas
 ```
 
 ### 构建项目
@@ -105,7 +105,7 @@ cd atlas-android-framework
 ## 模块结构
 
 ```
-atlas-android-framework/
+Atlas/
 ├── app/                          # 主应用模块
 │   ├── src/main/
 │   │   ├── java/                 # 应用代码
@@ -424,9 +424,9 @@ docs(readme): 更新快速开始指南
 
 ## 联系方式
 
-- 项目主页：https://github.com/your-org/atlas-android-framework
-- 问题反馈：https://github.com/your-org/atlas-android-framework/issues
-- 邮箱：dev@example.com
+- 项目主页：https://github.com/govech/Atlas
+- 问题反馈：https://github.com/govech/Atlas/issues
+- 邮箱：暂无
 
 ## 致谢
 
