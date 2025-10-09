@@ -71,8 +71,16 @@
     - 正确实现equals和hashCode方法
     - _Requirements: 设计文档数据模型_
 
-- [ ] 4. 实现工具类系统
-  - [ ] 4.1 创建BundleBuilder参数构建器
+- [x] 4. 实现工具类系统
+
+
+
+
+
+
+  - [x] 4.1 创建BundleBuilder参数构建器
+
+
     - 实现BundleBuilder类
     - 实现putString、putInt、putLong等类型安全方法
     - 实现putSerializable和putParcelable方法
@@ -82,7 +90,9 @@
     - 添加create静态工厂方法
     - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5, 4.6_
 
-  - [ ] 4.2 创建RouteUtils工具类
+  - [x] 4.2 创建RouteUtils工具类
+
+
     - 实现validatePath方法验证路径格式
     - 实现parsePathParams方法解析路径参数
     - 实现exportRouteTable方法导出路由表为JSON
@@ -92,14 +102,21 @@
     - 实现getRequiredPermissions方法获取所需权限
     - _Requirements: 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7_
 
-- [ ] 5. 实现注解系统
-  - [ ] 5.1 创建路由注解
+- [x] 5. 实现注解系统
+
+
+
+  - [x] 5.1 创建路由注解
+
+
     - 实现@Route注解，包含path、description、requireLogin等属性
     - 实现@Intercepted注解，包含拦截器类列表
     - 设置正确的Target和Retention
     - _Requirements: 6.1, 6.2, 6.3, 6.4_
 
-  - [ ] 5.2 创建AnnotationProcessor注解处理器
+  - [x] 5.2 创建AnnotationProcessor注解处理器
+
+
     - 实现AnnotationProcessor单例类
     - 实现scanAndRegister方法扫描包中的注解
     - 实现processActivity方法处理单个Activity
