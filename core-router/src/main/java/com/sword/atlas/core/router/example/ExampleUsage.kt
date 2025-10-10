@@ -28,11 +28,17 @@ import javax.inject.Inject
  * @author Router Framework
  * @since 1.0.0
  */
-@AndroidEntryPoint
-class ExampleUsage @Inject constructor() {
+class ExampleUsage {
 
-    @Inject
-    lateinit var router: Router
+    // 在实际使用中，可以通过Hilt注入Router实例
+    // @Inject lateinit var router: Router
+    
+    // 这里为了示例简单，直接使用静态方法
+    private fun getRouter(): Router {
+        // 在实际应用中，这里应该通过依赖注入获取Router实例
+        // 这里只是为了编译通过的示例代码
+        throw NotImplementedError("This is example code, please use dependency injection in real application")
+    }
 
     /**
      * 示例1：基础路由导航
@@ -233,6 +239,8 @@ class ExampleUsage @Inject constructor() {
      * 展示如何动态注册路由和管理路由表
      */
     fun routeTableManagement() {
+        val router = getRouter()
+        
         // 动态注册单个路由
         router.register("/dynamic/page", DynamicActivity::class.java)
 
@@ -245,7 +253,7 @@ class ExampleUsage @Inject constructor() {
         router.registerRoutes(routes)
 
         // 获取所有路由信息（用于调试）
-        val allRoutes = router.routeTable.getAllRoutes()
+        val allRoutes = router.getAllRoutes()
         println("当前注册的路由数量: ${allRoutes.size}")
         allRoutes.forEach { (path, activityClass) ->
             println("路径: $path -> Activity: ${activityClass.simpleName}")
