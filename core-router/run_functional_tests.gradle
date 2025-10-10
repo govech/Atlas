@@ -1,0 +1,59 @@
+// 功能验证测试执行脚本
+// 使用方法: ./gradlew -b run_functional_tests.gradle runFunctionalTests
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+
+repositories {
+    google()
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.jetbrains.kotlin:kotlin-test:1.8.10'
+    testImplementation 'org.mockito.kotlin:mockito-kotlin:4.1.0'
+    testImplementation 'androidx.test:core:1.5.0'
+    testImplementation 'androidx.test.ext:junit:1.1.5'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4'
+}
+
+task runFunctionalTests(type: Test) {
+    description = '执行路由框架功能验证测试'
+    group = 'verification'
+    
+    // 指定测试源码目录
+    testClassesDirs = files('src/test/java')
+    classpath = sourceSets.test.runtimeClasspath
+    
+    // 只运行功能测试
+    include '**/functional/**/*Test.class'
+    
+    // 测试报告配置
+    reports {
+        html.enabled = true
+        junitXml.enabled = true
+    }
+    
+    // 测试执行配置
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+        exceptionFormat "full"
+        showCauses true
+        showExceptions true
+        showStackTraces true
+    }
+    
+    // 失败时继续执行其他测试
+    ignoreFailures = false
+    
+    doFirst {
+        println "开始执行路由框架功能验证测试..."
+        println "测试范围: 基础路由导航、参数传递、拦截器链、回调机制、异常处理、注解自动注册"
+    }
+    
+    doLast {
+        println "功能验证测试执行完成!"
+        println "测试报告位置: ${reports.html.destination}/index.html"
+    }
+}

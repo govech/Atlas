@@ -458,3 +458,78 @@ class CustomInterceptor : RouteInterceptor {
         return true // 返回true继续执行，false中断路由
     }
 }
+    /**
+
+     * 执行任务14的功能验证
+     * 验证所有要求的功能：基础路由导航、参数传递、拦截器链、回调机制、异常处理、注解自动注册
+     */
+    fun executeTask14Verification(context: Context): String {
+        println("开始执行任务14功能验证...")
+        
+        val verification = com.sword.atlas.core.router.verification.FunctionalVerification()
+        val result = verification.executeAllVerifications(context)
+        val report = result.getReport()
+        
+        println(report)
+        
+        // 额外执行综合验证
+        val comprehensiveResult = verification.comprehensiveVerification(context)
+        if (comprehensiveResult) {
+            println("✓ 综合功能验证通过")
+        } else {
+            println("✗ 综合功能验证失败")
+        }
+        
+        return report
+    }
+
+    /**
+     * 演示任务14的所有功能要求
+     */
+    fun demonstrateTask14Features(context: Context) = runBlocking {
+        println("=== 任务14功能验证演示 ===")
+        
+        // 1. 基础路由导航功能
+        println("1. 测试基础路由导航功能")
+        basicNavigationExample(context)
+        
+        // 2. 参数传递功能
+        println("2. 测试参数传递功能")
+        parameterNavigationExample(context)
+        
+        // 3. 拦截器链执行
+        println("3. 测试拦截器链执行")
+        val testInterceptor = object : com.sword.atlas.core.router.interceptor.RouteInterceptor {
+            override val priority: Int = 150
+            override suspend fun intercept(request: RouteRequest): Boolean {
+                println("✓ 拦截器执行: ${request.path}")
+                return true
+            }
+        }
+        interceptorManager.addGlobalInterceptor(testInterceptor)
+        Router.with(context).to("/settings").go()
+        
+        // 4. 回调机制
+        println("4. 测试回调机制")
+        callbackNavigationExample(context)
+        
+        // 5. 异常处理和降级
+        println("5. 测试异常处理和降级")
+        errorHandlingExample(context)
+        
+        // 6. 注解自动注册
+        println("6. 测试注解自动注册")
+        try {
+            annotationProcessor.processActivity(AnnotatedHomeActivity::class.java)
+            val registered = routeTable.getActivity("/annotated-home") == AnnotatedHomeActivity::class.java
+            if (registered) {
+                println("✓ 注解自动注册成功")
+            } else {
+                println("✗ 注解自动注册失败")
+            }
+        } catch (e: Exception) {
+            println("✗ 注解自动注册异常: ${e.message}")
+        }
+        
+        println("=== 任务14功能验证演示完成 ===")
+    }

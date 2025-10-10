@@ -59,6 +59,7 @@ class LoginActivity : BaseVMActivity<ActivityLoginBinding, LoginViewModel>() {
                         // 登录失败
                         hideLoading()
                         toast(state.message)
+
                     }
                 }
             }
