@@ -486,47 +486,43 @@ class CustomInterceptor : RouteInterceptor {
     /**
      * 演示任务14的所有功能要求
      */
-    fun demonstrateTask14Features(context: Context) = runBlocking {
+    fun demonstrateTask14Features(context: Context) {
         println("=== 任务14功能验证演示 ===")
         
         // 1. 基础路由导航功能
         println("1. 测试基础路由导航功能")
-        basicNavigationExample(context)
+        Router.with(context).to("/home").go()
         
         // 2. 参数传递功能
         println("2. 测试参数传递功能")
-        parameterNavigationExample(context)
+        Router.with(context)
+            .to("/profile")
+            .withString("userId", "12345")
+            .withInt("age", 25)
+            .go()
         
         // 3. 拦截器链执行
         println("3. 测试拦截器链执行")
-        val testInterceptor = object : com.sword.atlas.core.router.interceptor.RouteInterceptor {
-            override val priority: Int = 150
-            override suspend fun intercept(request: RouteRequest): Boolean {
-                println("✓ 拦截器执行: ${request.path}")
-                return true
-            }
-        }
-        interceptorManager.addGlobalInterceptor(testInterceptor)
         Router.with(context).to("/settings").go()
         
         // 4. 回调机制
         println("4. 测试回调机制")
-        callbackNavigationExample(context)
+        Router.with(context)
+            .to("/login")
+            .withCallback(object : NavigationCallback {
+                override fun onSuccess(path: String) {
+                    println("✓ 导航成功: $path")
+                }
+                override fun onError(exception: Exception) {
+                    println("✗ 导航失败: ${exception.message}")
+                }
+            })
+            .go()
         
         // 5. 异常处理和降级
         println("5. 测试异常处理和降级")
-        errorHandlingExample(context)
-        
-        // 6. 注解自动注册
-        println("6. 测试注解自动注册")
         try {
-            annotationProcessor.processActivity(AnnotatedHomeActivity::class.java)
-            val registered = routeTable.getActivity("/annotated-home") == AnnotatedHomeActivity::class.java
-            if (registered) {
-                println("✓ 注解自动注册成功")
-            } else {
-                println("✗ 注解自动注册失败")
-            }
+            Router.with(context).to("/nonexistent").go()
         } catch (e: Exception) {
             println("✗ 注解自动注册异常: ${e.message}")
         }

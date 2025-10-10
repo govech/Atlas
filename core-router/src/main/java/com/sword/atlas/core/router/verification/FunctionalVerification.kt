@@ -161,7 +161,7 @@ class FunctionalVerification {
             routeTable.register("/test", TestActivity::class.java)
 
             // 验证拦截器被正确添加
-            val globalInterceptors = interceptorManager.getAllGlobalInterceptors()
+            val globalInterceptors = interceptorManager.getGlobalInterceptors()
             globalInterceptors.size == 3 &&
             globalInterceptors.contains(interceptor1) &&
             globalInterceptors.contains(interceptor2) &&
@@ -256,7 +256,7 @@ class FunctionalVerification {
 
             // 3. 验证所有组件正常工作
             val routeExists = routeTable.getActivity("/main") == TestActivity::class.java
-            val interceptorExists = interceptorManager.getAllGlobalInterceptors().contains(logInterceptor)
+            val interceptorExists = interceptorManager.getGlobalInterceptors().contains(logInterceptor)
             val parametersSet = request.bundle.getString("title") == "主页面" && 
                                request.bundle.getInt("userId") == 12345
 
@@ -302,11 +302,11 @@ class FunctionalVerification {
             
             return buildString {
                 appendLine(header)
-                appendLine("=" * 50)
+                appendLine("=".repeat(50))
                 details.forEach { detail ->
                     appendLine(detail)
                 }
-                appendLine("=" * 50)
+                appendLine("=".repeat(50))
                 appendLine("验证完成时间: ${System.currentTimeMillis()}")
             }
         }
