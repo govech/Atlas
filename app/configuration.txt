@@ -785,6 +785,23 @@
 -dontwarn androidx.room.**
 
 # End of content from C:\Users\cairong\work\prcatice\Atlas\core-database\build\intermediates\consumer_proguard_dir\release\exportReleaseConsumerProguardFiles\lib0\proguard.txt
+# The proguard configuration file for the following section is C:\Users\cairong\work\prcatice\Atlas\core-router\build\intermediates\consumer_proguard_dir\release\exportReleaseConsumerProguardFiles\lib0\proguard.txt
+# Router specific consumer rules
+# Keep all router classes and interfaces
+-keep class com.sword.atlas.core.router.** { *; }
+
+# Keep annotation classes
+-keep @interface com.sword.atlas.core.router.annotation.** { *; }
+
+# Keep classes with Route annotation
+-keep @com.sword.atlas.core.router.annotation.Route class * { *; }
+
+# Keep RouteInterceptor implementations
+-keep class * implements com.sword.atlas.core.router.interceptor.RouteInterceptor { *; }
+
+# Keep callback interfaces
+-keep interface com.sword.atlas.core.router.callback.** { *; }
+# End of content from C:\Users\cairong\work\prcatice\Atlas\core-router\build\intermediates\consumer_proguard_dir\release\exportReleaseConsumerProguardFiles\lib0\proguard.txt
 # The proguard configuration file for the following section is C:\Users\cairong\work\prcatice\Atlas\core-common\build\intermediates\consumer_proguard_dir\release\exportReleaseConsumerProguardFiles\lib0\proguard.txt
 # ================================
 # core-common模块混淆规则
@@ -811,43 +828,6 @@
 }
 
 # End of content from C:\Users\cairong\work\prcatice\Atlas\core-common\build\intermediates\consumer_proguard_dir\release\exportReleaseConsumerProguardFiles\lib0\proguard.txt
-# The proguard configuration file for the following section is C:\Users\cairong\work\prcatice\Atlas\core-model\build\intermediates\consumer_proguard_dir\release\exportReleaseConsumerProguardFiles\lib0\proguard.txt
-# ================================
-# core-model模块混淆规则
-# ================================
-
-# 保留所有数据模型类
-# 数据模型类通常用于序列化/反序列化，需要保留所有字段和方法
--keep class com.sword.atlas.core.model.** { *; }
-
-# 保留所有枚举类
--keepclassmembers enum com.sword.atlas.core.model.** {
-    public static **[] values();
-    public static ** valueOf(java.lang.String);
-}
-
-# 保留泛型信息
--keepattributes Signature
-
-# 保留注解
--keepattributes *Annotation*
-
-# 保留Kotlin元数据
--keep class kotlin.Metadata { *; }
-
-# 保留密封类（Sealed Class）
--keep class com.sword.atlas.core.model.Result { *; }
--keep class com.sword.atlas.core.model.Result$* { *; }
--keep class com.sword.atlas.core.model.UiState { *; }
--keep class com.sword.atlas.core.model.UiState$* { *; }
-
-# 保留数据类的copy方法和component方法
--keepclassmembers class com.sword.atlas.core.model.** {
-    public ** copy(...);
-    public ** component*();
-}
-
-# End of content from C:\Users\cairong\work\prcatice\Atlas\core-model\build\intermediates\consumer_proguard_dir\release\exportReleaseConsumerProguardFiles\lib0\proguard.txt
 # The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\ffd22e5c547523e7aa3b99850a7a53f3\transformed\material-1.13.0\proguard.txt
 # Copyright (C) 2015 The Android Open Source Project
 #

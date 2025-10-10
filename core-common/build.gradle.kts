@@ -35,8 +35,7 @@ android {
 }
 
 dependencies {
-    // Core Model Module
-    api(project(":core-model"))
+    // Note: core-model has been merged into core-common
     
     // AndroidX Core
     implementation(libs.androidx.core.ktx)

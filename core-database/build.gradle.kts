@@ -37,7 +37,6 @@ android {
 
 dependencies {
     // Core Modules
-    api(project(":core-model"))
     api(project(":core-common"))
     
     // AndroidX Core
