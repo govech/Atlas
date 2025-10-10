@@ -10,21 +10,21 @@ import javax.inject.Singleton
 /**
  * 登录检查拦截器
  * 检查用户登录状态，未登录时拦截路由并跳转到登录页面
- * 
+ *
  * 优先级设置为100，确保在权限检查之前执行
- * 
+ *
  * @author Kiro
  * @since 1.0.0
  */
 @Singleton
 class LoginInterceptor @Inject constructor() : RouteInterceptor {
-    
+
     /**
      * 拦截器优先级
      * 数值越小优先级越高，登录检查应该在权限检查之前
      */
     override val priority: Int = 100
-    
+
     /**
      * 登录状态存储键
      */
@@ -34,14 +34,14 @@ class LoginInterceptor @Inject constructor() : RouteInterceptor {
         const val LOGIN_PATH = "/login"
         const val KEY_REDIRECT_PATH = "redirect_path"
     }
-    
+
     /**
      * 需要登录的路径集合
      * 可以通过配置或注解动态添加
      */
     private val loginRequiredPaths = mutableSetOf(
         "/user/profile",
-        "/user/settings", 
+        "/user/settings",
         "/user/info",
         "/order/list",
         "/order/detail",
@@ -49,30 +49,30 @@ class LoginInterceptor @Inject constructor() : RouteInterceptor {
         "/favorite/list",
         "/cart/list"
     )
-    
+
     /**
      * 添加需要登录的路径
-     * 
+     *
      * @param path 路径
      */
     fun addLoginRequiredPath(path: String) {
         loginRequiredPaths.add(path)
         LogUtil.d("Added login required path: $path")
     }
-    
+
     /**
      * 移除需要登录的路径
-     * 
+     *
      * @param path 路径
      */
     fun removeLoginRequiredPath(path: String) {
         loginRequiredPaths.remove(path)
         LogUtil.d("Removed login required path: $path")
     }
-    
+
     /**
      * 批量设置需要登录的路径
-     * 
+     *
      * @param paths 路径集合
      */
     fun setLoginRequiredPaths(paths: Set<String>) {
@@ -80,72 +80,72 @@ class LoginInterceptor @Inject constructor() : RouteInterceptor {
         loginRequiredPaths.addAll(paths)
         LogUtil.d("Set login required paths: $paths")
     }
-    
+
     /**
      * 获取需要登录的路径集合
-     * 
+     *
      * @return 路径集合的副本
      */
     fun getLoginRequiredPaths(): Set<String> {
         return loginRequiredPaths.toSet()
     }
-    
+
     /**
      * 拦截路由请求
      * 检查目标路径是否需要登录，如果需要且用户未登录则拦截
-     * 
+     *
      * @param request 路由请求
      * @return true继续执行，false中断路由
      */
     override suspend fun intercept(request: RouteRequest): Boolean {
         val targetPath = request.path
-        
+
         // 如果目标路径是登录页面，直接通过
         if (targetPath == LOGIN_PATH) {
             LogUtil.d("Target is login page, skip login check")
             return true
         }
-        
+
         // 检查是否需要登录
         if (!isLoginRequired(targetPath)) {
             LogUtil.d("Path '$targetPath' does not require login")
             return true
         }
-        
+
         // 检查登录状态
         if (isUserLoggedIn()) {
             LogUtil.d("User is logged in, allow access to '$targetPath'")
             return true
         }
-        
+
         // 用户未登录，拦截路由并跳转到登录页面
         LogUtil.d("User not logged in, redirecting to login page from '$targetPath'")
         redirectToLogin(request, targetPath)
         return false
     }
-    
+
     /**
      * 检查路径是否需要登录
-     * 
+     *
      * @param path 路径
      * @return true需要登录，false不需要登录
      */
     private fun isLoginRequired(path: String): Boolean {
-        return loginRequiredPaths.contains(path) || 
-               loginRequiredPaths.any { requiredPath ->
-                   // 支持通配符匹配，例如 /user/* 匹配 /user/profile
-                   if (requiredPath.endsWith("/*")) {
-                       val prefix = requiredPath.substring(0, requiredPath.length - 2)
-                       path.startsWith(prefix)
-                   } else {
-                       false
-                   }
-               }
+        return loginRequiredPaths.contains(path) ||
+                loginRequiredPaths.any { requiredPath ->
+                    // 支持通配符匹配，例如 /user/* 匹配 /user/profile
+                    if (requiredPath.endsWith("/*")) {
+                        val prefix = requiredPath.substring(0, requiredPath.length - 2)
+                        path.startsWith(prefix)
+                    } else {
+                        false
+                    }
+                }
     }
-    
+
     /**
      * 检查用户是否已登录
-     * 
+     *
      * @return true已登录，false未登录
      */
     private fun isUserLoggedIn(): Boolean {
@@ -154,7 +154,7 @@ class LoginInterceptor @Inject constructor() : RouteInterceptor {
         if (!isLoggedIn) {
             return false
         }
-        
+
         // 检查用户令牌是否存在
         val userToken = SPUtil.getString(KEY_USER_TOKEN, "")
         if (userToken.isEmpty()) {
@@ -162,16 +162,19 @@ class LoginInterceptor @Inject constructor() : RouteInterceptor {
             SPUtil.putBoolean(KEY_IS_LOGGED_IN, false)
             return false
         }
-        
-        // TODO: 可以在这里添加令牌有效性检查
-        // 例如检查令牌是否过期、格式是否正确等
-        
+
+        if (!isTokenValid(userToken)) { //todo 检查令牌是否过期、格式是否正确等
+            // 令牌无效，清除登录状态
+//            SPUtil.putBoolean(KEY_IS_LOGGED_IN, false)
+//            return false
+        }
+
         return true
     }
-    
+
     /**
      * 跳转到登录页面
-     * 
+     *
      * @param originalRequest 原始路由请求
      * @param originalPath 原始目标路径
      */
@@ -180,27 +183,28 @@ class LoginInterceptor @Inject constructor() : RouteInterceptor {
             // 创建登录页面Intent
             // 注意：这里使用简单的Intent跳转，因为Router还未完全实现
             // 在Router完全实现后，可以改为使用Router.with(context).to(LOGIN_PATH).go()
-            
+
             // 由于Router还未实现，这里先记录日志，实际跳转逻辑将在Router实现后完善
             LogUtil.d("Should redirect to login page with original path: $originalPath")
-            
+
             // 保存原始路径，登录成功后可以跳转回去
             SPUtil.putString(KEY_REDIRECT_PATH, originalPath)
-            
-            // TODO: 在Router完全实现后，使用以下代码进行跳转
-            // Router.with(originalRequest.context)
-            //     .to(LOGIN_PATH)
+
+            // 跳转到登录页面
+            val intent = Intent(originalRequest.context, getLoginActivityClass())
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            originalRequest.context.startActivity(intent)
             //     .withString(KEY_REDIRECT_PATH, originalPath)
             //     .go()
-            
+
         } catch (e: Exception) {
             LogUtil.e("Failed to redirect to login page", e)
         }
     }
-    
+
     /**
      * 设置用户登录状态
-     * 
+     *
      * @param isLoggedIn 是否已登录
      * @param userToken 用户令牌，可选
      */
@@ -215,22 +219,51 @@ class LoginInterceptor @Inject constructor() : RouteInterceptor {
         }
         LogUtil.d("User login state updated: isLoggedIn=$isLoggedIn")
     }
-    
+
     /**
      * 获取登录后的重定向路径
-     * 
+     *
      * @return 重定向路径，如果没有则返回null
      */
     fun getRedirectPath(): String? {
         val redirectPath = SPUtil.getString(KEY_REDIRECT_PATH, "")
         return if (redirectPath.isNotEmpty()) redirectPath else null
     }
-    
+
     /**
      * 清除重定向路径
      */
     fun clearRedirectPath() {
         SPUtil.remove(KEY_REDIRECT_PATH)
         LogUtil.d("Redirect path cleared")
+    }
+}
+
+/**
+ * 检查Token是否有效
+ */
+private fun isTokenValid(token: String): Boolean {
+    if (token.isEmpty()) return false
+
+    // 这里可以添加更复杂的验证逻辑
+    // 例如：检查Token格式、过期时间等
+    return try {
+        // 简单的长度检查，实际项目中应该解析JWT或调用验证接口
+        token.length > 10
+    } catch (e: Exception) {
+        LogUtil.e("Token validation failed", e, "LoginInterceptor")
+        false
+    }
+}
+
+/**
+ * 获取登录Activity的Class
+ */
+private fun getLoginActivityClass(): Class<*> {
+    return try {
+        Class.forName("com.sword.atlas.feature.template.ui.login.LoginActivity")
+    } catch (e: ClassNotFoundException) {
+        LogUtil.e("LoginActivity not found", e, "LoginInterceptor")
+        throw RuntimeException("LoginActivity not found", e)
     }
 }
