@@ -123,6 +123,7 @@ Atlas/
 │   │   │       │   ├── api/      # API接口
 │   │   │       │   ├── model/    # 数据模型
 │   │   │       │   └── repository/ # 仓库
+│   │   │       ├── di/           # 依赖注入
 │   │   │       └── ui/           # UI层
 │   │   │           ├── login/    # 登录功能
 │   │   │           ├── userlist/ # 用户列表
@@ -145,11 +146,27 @@ Atlas/
 ├── core-common/                  # 基础架构模块
 │   ├── src/main/
 │   │   └── java/
-│   │       └── com/sword/atlas/core/common/
-│   │           ├── base/         # 基础类
-│   │           ├── util/         # 工具类
-│   │           ├── ext/          # 扩展函数
-│   │           └── constant/     # 常量定义
+│   │       └── com/sword/atlas/core/
+│   │           ├── common/
+│   │           │   ├── base/         # 基础类
+│   │           │   ├── constant/     # 常量定义
+│   │           │   ├── dispatcher/   # 协程调度器
+│   │           │   ├── exception/    # 异常处理
+│   │           │   ├── ext/          # 扩展函数
+│   │           │   └── util/         # 工具类
+│   │           └── model/
+│   │               ├── ApiResponse/  # API响应封装类
+│   │               ├── ErrorCode/    # 错误码枚举
+│   │               ├── PageData/     # 分页数据封装类
+│   │               ├── Result/       # 通用结果封装类
+│   │               └── UiState/      # UI状态密封类
+│   │   
+│   │          
+│   │           
+│   │           
+│   │          
+│   │           
+│   │           
 │   └── build.gradle.kts
 │
 ├── core-network/                 # 网络层模块
@@ -157,10 +174,13 @@ Atlas/
 │   │   └── java/
 │   │       └── com/sword/atlas/core/network/
 │   │           ├── client/       # Retrofit客户端
+│   │           ├── config/       # 网络配置
+│   │           ├── di/           # Hilt模块
+│   │           ├── ext/          # 扩展函数
 │   │           ├── interceptor/  # 拦截器
 │   │           ├── manager/      # 下载上传管理
-│   │           ├── ext/          # 扩展函数
-│   │           └── di/           # Hilt模块
+│   │           ├── monitor/      # 网络监控
+│   │           └── security/     # 安全相关
 │   └── build.gradle.kts
 │
 ├── core-database/                # 数据库层模块
@@ -171,6 +191,18 @@ Atlas/
 │   │           ├── entity/       # 实体类
 │   │           ├── migration/    # 数据库迁移
 │   │           └── di/           # Hilt模块
+│   └── build.gradle.kts
+│
+├── core-router/                  # 路由模块
+│   ├── src/main/
+│   │   └── java/
+│   │       └── com/sword/atlas/core/router/
+│   │           ├── annotation/   # 路由注解
+│   │           ├── callback/     # 回调处理
+│   │           ├── exception/    # 异常处理
+│   │           ├── interceptor/  # 路由拦截器
+│   │           ├── processor/    # 注解处理器
+│   │           └── util/         # 工具类
 │   └── build.gradle.kts
 │
 ├── core-model/                   # 数据模型模块
@@ -188,6 +220,7 @@ Atlas/
 │   ├── libs.versions.toml        # 依赖版本管理
 │   └── wrapper/
 ├── doc/                          # 文档目录
+├── scripts/                      # 脚本工具
 ├── build.gradle.kts              # 根构建脚本
 └── settings.gradle.kts           # 项目设置
 ```
