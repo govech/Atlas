@@ -495,6 +495,8 @@ override fun onCreate(savedInstanceState: Bundle?) {
 - **1.2.0** - 添加同步导航和异常处理
 - **1.3.0** - 添加动态路由注册和注解处理器
 
+## **[技术原理](技术原理.md)**
+
 ## 许可证
 
 ```

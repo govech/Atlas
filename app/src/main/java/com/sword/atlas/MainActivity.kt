@@ -2,6 +2,7 @@ package com.sword.atlas
 
 import android.content.Intent
 import android.os.Bundle
+import com.sword.atlas.core.router.annotation.Route
 import com.sword.atlas.core.ui.base.BaseActivity
 import com.sword.atlas.databinding.ActivityMainBinding
 import com.sword.atlas.feature.template.ui.login.LoginActivity
@@ -12,6 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
  * 主Activity
  * 提供导航到各功能模块的入口
  */
+@Route(path = "/home", description = "首页")
 @AndroidEntryPoint
 class MainActivity : BaseActivity() {
     

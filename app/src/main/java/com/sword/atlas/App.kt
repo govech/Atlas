@@ -3,7 +3,9 @@ package com.sword.atlas
 import android.app.Application
 import com.sword.atlas.core.common.util.LogUtil
 import com.sword.atlas.core.common.util.SPUtil
+import com.sword.atlas.core.router.Router
 import dagger.hilt.android.HiltAndroidApp
+import javax.inject.Inject
 
 /**
  * 应用Application类
@@ -11,6 +13,9 @@ import dagger.hilt.android.HiltAndroidApp
  */
 @HiltAndroidApp
 class App : Application() {
+
+    @Inject
+    lateinit var router: Router
 
     override fun onCreate() {
         super.onCreate()
@@ -24,8 +29,17 @@ class App : Application() {
         
         // 初始化其他全局配置
         initGlobalConfig()
+
+        initRouter()
     }
     
+    /**
+     * 初始化路由
+     */
+    private fun initRouter() {
+        router.register("/home", MainActivity::class.java)
+    }
+
     /**
      * 初始化全局配置
      */

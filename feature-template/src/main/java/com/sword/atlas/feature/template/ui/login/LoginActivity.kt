@@ -1,14 +1,17 @@
 package com.sword.atlas.feature.template.ui.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.sword.atlas.core.common.ext.toast
 import com.sword.atlas.core.model.UiState
+import com.sword.atlas.core.router.Router
 import com.sword.atlas.core.ui.base.BaseVMActivity
 import com.sword.atlas.feature.template.databinding.ActivityLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -59,7 +62,7 @@ class LoginActivity : BaseVMActivity<ActivityLoginBinding, LoginViewModel>() {
                         // 登录失败
                         hideLoading()
                         toast(state.message)
-
+                        Router.with(this@LoginActivity).to("/home").go()
                     }
                 }
             }

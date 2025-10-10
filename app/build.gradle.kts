@@ -83,6 +83,7 @@ dependencies {
     implementation(project(":core-network"))
     implementation(project(":core-database"))
     implementation(project(":core-ui"))
+    implementation(project(":core-router"))
     
     // Feature modules
     implementation(project(":feature-template"))
