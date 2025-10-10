@@ -31,7 +31,7 @@ class CallbackHandler @Inject constructor() {
                 try {
                     it.onSuccess(path)
                 } catch (e: Exception) {
-                    LogUtil.e("CallbackHandler", "Error executing onSuccess callback", e)
+                    LogUtil.e("Error executing onSuccess callback", e, "CallbackHandler")
                 }
             } else {
                 // 切换到主线程执行
@@ -39,7 +39,7 @@ class CallbackHandler @Inject constructor() {
                     try {
                         it.onSuccess(path)
                     } catch (e: Exception) {
-                        LogUtil.e("CallbackHandler", "Error executing onSuccess callback", e)
+                        LogUtil.e("Error executing onSuccess callback", e, "CallbackHandler")
                     }
                 }
             }
@@ -59,7 +59,7 @@ class CallbackHandler @Inject constructor() {
                 try {
                     it.onError(exception)
                 } catch (e: Exception) {
-                    LogUtil.e("CallbackHandler", "Error executing onError callback", e)
+                    LogUtil.e("Error executing onError callback", e, "CallbackHandler")
                 }
             } else {
                 // 切换到主线程执行
@@ -67,7 +67,7 @@ class CallbackHandler @Inject constructor() {
                     try {
                         it.onError(exception)
                     } catch (e: Exception) {
-                        LogUtil.e("CallbackHandler", "Error executing onError callback", e)
+                        LogUtil.e("Error executing onError callback", e, "CallbackHandler")
                     }
                 }
             }
@@ -87,7 +87,7 @@ class CallbackHandler @Inject constructor() {
                 try {
                     it.onCancel(path)
                 } catch (e: Exception) {
-                    LogUtil.e("CallbackHandler", "Error executing onCancel callback", e)
+                    LogUtil.e("Error executing onCancel callback", e, "CallbackHandler")
                 }
             } else {
                 // 切换到主线程执行
@@ -95,7 +95,7 @@ class CallbackHandler @Inject constructor() {
                     try {
                         it.onCancel(path)
                     } catch (e: Exception) {
-                        LogUtil.e("CallbackHandler", "Error executing onCancel callback", e)
+                        LogUtil.e("Error executing onCancel callback", e, "CallbackHandler")
                     }
                 }
             }

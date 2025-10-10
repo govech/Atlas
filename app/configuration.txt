@@ -1337,6 +1337,23 @@
 -dontwarn org.openjsse.**
 
 # End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\58af5a1e9a75e4e6e089b92e7f95800e\transformed\rules\lib\META-INF\proguard\okhttp3.pro
+# The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\967776fed1258bcbca965be052c70fd4\transformed\rules\lib\META-INF\proguard\protobuf.pro
+# Recently Protobuf Javalite introduced a change that relies on reflection,
+# which doesn't work with Proguard. This rule keeps the reflection usages in
+# (shaded) Protobuf classes in Tink as-is.
+# The location of this file is determined by
+# - https://developer.android.com/studio/build/shrink-code#configuration-files
+# - https://docs.bazel.build/versions/master/be/java.html#java_library.resources
+# See also:
+# - https://github.com/google/tink/issues/361
+# - https://github.com/protocolbuffers/protobuf/issues/6463
+# WARNING: the shaded package name com.google.crypto.tink.shaded.protobuf must
+# be kept in sync with jar_jar_rules.txt.
+-keepclassmembers class * extends com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite {
+  <fields>;
+}
+
+# End of content from C:\Users\cairong\.gradle\caches\8.11.1\transforms\967776fed1258bcbca965be052c70fd4\transformed\rules\lib\META-INF\proguard\protobuf.pro
 # The proguard configuration file for the following section is C:\Users\cairong\.gradle\caches\8.11.1\transforms\6825403f9562f1330ddbb16810d4c419\transformed\rules\lib\META-INF\proguard\gson.pro
 ### Gson ProGuard and R8 rules which are relevant for all users
 ### This file is automatically recognized by ProGuard and R8, see https://developer.android.com/build/shrink-code#configuration-files

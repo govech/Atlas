@@ -45,9 +45,9 @@ class RouteResultManager @Inject constructor() {
         if (callback != null) {
             try {
                 callback.onActivityResult(requestCode, resultCode, data)
-                LogUtil.d("RouteResultManager", "Handled activity result for requestCode: $requestCode, resultCode: $resultCode")
+                LogUtil.d("Handled activity result for requestCode: $requestCode, resultCode: $resultCode", "RouteResultManager")
             } catch (e: Exception) {
-                LogUtil.e("RouteResultManager", "Error handling activity result for requestCode: $requestCode", e)
+                LogUtil.e("Error handling activity result for requestCode: $requestCode", e, "RouteResultManager")
             } finally {
                 // 一次性回调，处理完后移除
                 callbacks.remove(requestCode)

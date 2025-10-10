@@ -50,7 +50,7 @@ class AnnotationProcessor @Inject constructor(
                             processActivity(activityClass as Class<out Activity>)
                         }
                     } catch (e: ClassNotFoundException) {
-                        LogUtil.w("Activity class not found: ${activityInfo.name}", e)
+                        LogUtil.w("Activity class not found: ${activityInfo.name}")
                     } catch (e: Exception) {
                         LogUtil.e("Error processing activity: ${activityInfo.name}", e)
                     }
@@ -221,7 +221,7 @@ class AnnotationProcessor @Inject constructor(
                     validRoutes.add(path)
                 } catch (e: Exception) {
                     invalidRoutes.add(path)
-                    LogUtil.w("Invalid route found: $path -> ${activityClass.simpleName}", e)
+                    LogUtil.w("Invalid route found: $path -> ${activityClass.simpleName}")
                 }
             }
         } catch (e: Exception) {
