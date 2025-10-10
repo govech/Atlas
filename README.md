@@ -159,14 +159,7 @@ Atlas/
 │   │               ├── ErrorCode/    # 错误码枚举
 │   │               ├── PageData/     # 分页数据封装类
 │   │               ├── Result/       # 通用结果封装类
-│   │               └── UiState/      # UI状态密封类
-│   │   
-│   │          
-│   │           
-│   │           
-│   │          
-│   │           
-│   │           
+│   │               └── UiState/      # UI状态密封类     
 │   └── build.gradle.kts
 │
 ├── core-network/                 # 网络层模块
