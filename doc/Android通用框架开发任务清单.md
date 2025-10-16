@@ -131,7 +131,7 @@ build.gradle.kts（更新）
 -  创建Android Library模块
 -  基础模型类
   -  `ApiResponse<T>`：统一API响应包装
-  -  `Result<T>`：业务结果封装
+  -  `DataResult<T>`：业务结果封装
   -  `UiState<T>`：UI状态密封类（Loading/Success/Error）
   -  `PageData<T>`：分页数据模型
 -  错误码枚举`ErrorCode`
@@ -146,7 +146,7 @@ core-model/
 ├── build.gradle.kts
 └── src/main/java/com/sword/atlas/core/model/
     ├── ApiResponse.kt
-    ├── Result.kt
+    ├── DataResult.kt
     ├── UiState.kt
     ├── PageData.kt
     └── ErrorCode.kt
@@ -184,7 +184,7 @@ core-model/
 -  Flow扩展函数
   -  `flowRequest{}`：统一网络请求包装
   -  全局错误处理
-  -  自动转换`Result<T>`
+  -  自动转换`DataResult<T>`
 -  下载上传工具
   -  `DownloadManager`：下载进度监听
   -  `UploadManager`：上传进度监听

@@ -16412,7 +16412,7 @@ kotlin.RequiresOptIn
 kotlin.Result$Companion:
     private final java.lang.Object failure(java.lang.Throwable)
     private final java.lang.Object success(java.lang.Object)
-kotlin.Result:
+kotlin.DataResult:
     private final java.lang.Object value
     private synthetic void <init>(java.lang.Object)
     public static final synthetic kotlin.Result box-impl(java.lang.Object)

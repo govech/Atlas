@@ -2,7 +2,7 @@ package com.sword.atlas.feature.template.ui.login
 
 import androidx.lifecycle.viewModelScope
 import com.sword.atlas.core.common.base.BaseViewModel
-import com.sword.atlas.core.model.Result
+import com.sword.atlas.core.model.DataResult
 import com.sword.atlas.core.model.UiState
 import com.sword.atlas.feature.template.data.model.User
 import com.sword.atlas.feature.template.data.repository.LoginRepository
@@ -44,11 +44,11 @@ class LoginViewModel @Inject constructor(
             
             // 执行登录请求
             when (val result = repository.login(username, password)) {
-                is Result.Success -> {
+                is DataResult.Success -> {
                     // 登录成功
                     _loginState.value = UiState.Success(result.data)
                 }
-                is Result.Error -> {
+                is DataResult.Error -> {
                     // 登录失败
                     _loginState.value = UiState.Error(result.code, result.message)
                 }

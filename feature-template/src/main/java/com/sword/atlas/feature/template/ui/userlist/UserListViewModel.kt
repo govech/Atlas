@@ -2,7 +2,7 @@ package com.sword.atlas.feature.template.ui.userlist
 
 import androidx.lifecycle.viewModelScope
 import com.sword.atlas.core.common.base.BaseViewModel
-import com.sword.atlas.core.model.Result
+import com.sword.atlas.core.model.DataResult
 import com.sword.atlas.core.model.UiState
 import com.sword.atlas.feature.template.data.model.User
 import com.sword.atlas.feature.template.data.repository.UserListRepository
@@ -102,7 +102,7 @@ class UserListViewModel @Inject constructor(
      */
     private suspend fun loadUserList() {
         when (val result = repository.getUserList(currentPage, pageSize)) {
-            is Result.Success -> {
+            is DataResult.Success -> {
                 val pageData = result.data
                 userList.addAll(pageData.list)
                 _hasMore.value = pageData.hasMore
@@ -113,7 +113,7 @@ class UserListViewModel @Inject constructor(
                     _userListState.value = UiState.Success(userList.toList())
                 }
             }
-            is Result.Error -> {
+            is DataResult.Error -> {
                 if (userList.isEmpty()) {
                     _userListState.value = UiState.Error(result.code, result.message)
                 } else {

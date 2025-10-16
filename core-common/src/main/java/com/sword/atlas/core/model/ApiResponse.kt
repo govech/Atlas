@@ -37,6 +37,33 @@ data class ApiResponse<T>(
      */
     fun isError(): Boolean = !isSuccess()
     
+    /**
+     * 转换为DataResult类型
+     *
+     * @return DataResult对象
+     */
+    fun toDataResult(): DataResult<T> {
+        return if (isSuccess() && data != null) {
+            DataResult.Success(data)
+        } else {
+            DataResult.Error(code, message)
+        }
+    }
+    
+    /**
+     * 转换数据类型
+     *
+     * @param transform 转换函数
+     * @return 转换后的ApiResponse
+     */
+    fun <R> map(transform: (T) -> R): ApiResponse<R> {
+        return ApiResponse(
+            code = code,
+            message = message,
+            data = data?.let(transform)
+        )
+    }
+    
     companion object {
         /**
          * 创建成功响应

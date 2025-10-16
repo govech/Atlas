@@ -158,7 +158,7 @@ Atlas/
 │   │               ├── ApiResponse/  # API响应封装类
 │   │               ├── ErrorCode/    # 错误码枚举
 │   │               ├── PageData/     # 分页数据封装类
-│   │               ├── Result/       # 通用结果封装类
+│   │               ├── DataResult/       # 通用结果封装类
 │   │               └── UiState/      # UI状态密封类     
 │   └── build.gradle.kts
 │
@@ -203,7 +203,7 @@ Atlas/
 │   │   └── java/
 │   │       └── com/sword/atlas/core/model/
 │   │           ├── ApiResponse.kt
-│   │           ├── Result.kt
+│   │           ├── DataResult.kt
 │   │           ├── UiState.kt
 │   │           ├── PageData.kt
 │   │           └── ErrorCode.kt
@@ -236,10 +236,10 @@ class UserViewModel @Inject constructor(
             _userState.value = UiState.Loading
             
             when (val result = repository.getUser(userId)) {
-                is Result.Success -> {
+                is DataResult.Success -> {
                     _userState.value = UiState.Success(result.data)
                 }
-                is Result.Error -> {
+                is DataResult.Error -> {
                     _userState.value = UiState.Error(result.code, result.message)
                 }
             }
@@ -256,11 +256,11 @@ class UserRepository @Inject constructor(
     private val userDao: UserDao
 ) : BaseRepository() {
     
-    suspend fun getUser(userId: Long): Result<User> {
+    suspend fun getUser(userId: Long): DataResult<User> {
         // 先从数据库获取
         val localUser = userDao.getUserById(userId).first()
         if (localUser != null) {
-            return Result.Success(localUser.toUser())
+            return DataResult.Success(localUser.toUser())
         }
         
         // 从网络获取

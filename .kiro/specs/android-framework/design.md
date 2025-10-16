@@ -138,16 +138,16 @@ data class ApiResponse<T>(
 }
 ```
 
-#### Result - 业务结果封装
+#### DataResult - 业务结果封装
 
 ```kotlin
 /**
  * 业务结果封装类
  * @param T 成功数据类型
  */
-sealed class Result<out T> {
-    data class Success<T>(val data: T) : Result<T>()
-    data class Error(val code: Int, val message: String, val exception: Throwable? = null) : Result<Nothing>()
+sealed class DataResult<out T> {
+    data class Success<T>(val data: T) : DataResult<T>()
+    data class Error(val code: Int, val message: String, val exception: Throwable? = null) : DataResult<Nothing>()
     
     fun isSuccess(): Boolean = this is Success
     fun isError(): Boolean = this is Error

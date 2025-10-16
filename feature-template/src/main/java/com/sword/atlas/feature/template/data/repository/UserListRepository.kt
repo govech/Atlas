@@ -1,8 +1,8 @@
 package com.sword.atlas.feature.template.data.repository
 
 import com.sword.atlas.core.common.base.BaseRepository
+import com.sword.atlas.core.model.DataResult
 import com.sword.atlas.core.model.PageData
-import com.sword.atlas.core.model.Result
 import com.sword.atlas.feature.template.data.api.UserListApi
 import com.sword.atlas.feature.template.data.model.User
 import javax.inject.Inject
@@ -22,7 +22,7 @@ class UserListRepository @Inject constructor(
      * @param pageSize 每页数量
      * @return 分页用户列表
      */
-    suspend fun getUserList(pageNum: Int, pageSize: Int): Result<PageData<User>> {
+    suspend fun getUserList(pageNum: Int, pageSize: Int): DataResult<PageData<User>> {
         return executeRequest {
             api.getUserList(pageNum, pageSize)
         }

@@ -5,8 +5,8 @@ import com.google.gson.JsonSyntaxException
 import com.sword.atlas.core.common.util.LogUtil
 import com.sword.atlas.core.common.util.NetworkUtil
 import com.sword.atlas.core.model.ApiResponse
+import com.sword.atlas.core.model.DataResult
 import com.sword.atlas.core.model.ErrorCode
-import com.sword.atlas.core.model.Result
 import com.sword.atlas.core.network.config.NetworkConfig
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -27,16 +27,16 @@ import javax.net.ssl.SSLException
  * @param T 数据类型
  * @param context 上下文，用于网络状态检查
  * @param block 网络请求代码块
- * @return Flow<Result<T>> 包装后的Flow
+ * @return Flow<DataResult<T>> 包装后的Flow
  */
 fun <T> flowRequest(
     context: Context? = null,
     block: suspend () -> ApiResponse<T>
-): Flow<Result<T>> = flow {
+): Flow<DataResult<T>> = flow {
     // 检查网络状态
     context?.let {
         if (!NetworkUtil.isNetworkAvailable(it)) {
-            emit(Result.Error(ErrorCode.NETWORK_ERROR.code, "网络不可用，请检查网络连接"))
+            emit(DataResult.Error(ErrorCode.NETWORK_ERROR.code, "网络不可用，请检查网络连接"))
             return@flow
         }
     }
@@ -45,10 +45,10 @@ fun <T> flowRequest(
         val response = block()
         if (response.isSuccess()) {
             response.data?.let {
-                emit(Result.Success(it))
-            } ?: emit(Result.Error(ErrorCode.PARSE_ERROR.code, "响应数据为空"))
+                emit(DataResult.Success(it))
+            } ?: emit(DataResult.Error(ErrorCode.PARSE_ERROR.code, "响应数据为空"))
         } else {
-            emit(Result.Error(response.code, response.message))
+            emit(DataResult.Error(response.code, response.message))
         }
     } catch (e: Exception) {
         emit(handleException(e))
@@ -63,18 +63,18 @@ fun <T> flowRequest(
  * @param maxRetries 最大重试次数
  * @param retryDelayMillis 重试延迟时间（毫秒）
  * @param block 网络请求代码块
- * @return Flow<Result<T>> 包装后的Flow
+ * @return Flow<DataResult<T>> 包装后的Flow
  */
 fun <T> flowRequestWithRetry(
     context: Context? = null,
     maxRetries: Int = NetworkConfig.Retry.MAX_RETRIES,
     retryDelayMillis: Long = NetworkConfig.Retry.INITIAL_DELAY,
     block: suspend () -> ApiResponse<T>
-): Flow<Result<T>> = flow {
+): Flow<DataResult<T>> = flow {
     // 检查网络状态
     context?.let {
         if (!NetworkUtil.isNetworkAvailable(it)) {
-            emit(Result.Error(ErrorCode.NETWORK_ERROR.code, "网络不可用，请检查网络连接"))
+            emit(DataResult.Error(ErrorCode.NETWORK_ERROR.code, "网络不可用，请检查网络连接"))
             return@flow
         }
     }
@@ -86,10 +86,10 @@ fun <T> flowRequestWithRetry(
             val response = block()
             if (response.isSuccess()) {
                 response.data?.let {
-                    emit(Result.Success(it))
-                } ?: emit(Result.Error(ErrorCode.PARSE_ERROR.code, "响应数据为空"))
+                    emit(DataResult.Success(it))
+                } ?: emit(DataResult.Error(ErrorCode.PARSE_ERROR.code, "响应数据为空"))
             } else {
-                emit(Result.Error(response.code, response.message))
+                emit(DataResult.Error(response.code, response.message))
             }
             return@flow // 成功时退出重试循环
         } catch (e: Exception) {
@@ -115,23 +115,23 @@ fun <T> flowRequestWithRetry(
  * @param T 数据类型
  * @param context 上下文，用于网络状态检查
  * @param block 网络请求代码块
- * @return Flow<Result<T>> 包装后的Flow
+ * @return Flow<DataResult<T>> 包装后的Flow
  */
 fun <T> flowRequestDirect(
     context: Context? = null,
     block: suspend () -> T
-): Flow<Result<T>> = flow {
+): Flow<DataResult<T>> = flow {
     // 检查网络状态
     context?.let {
         if (!NetworkUtil.isNetworkAvailable(it)) {
-            emit(Result.Error(ErrorCode.NETWORK_ERROR.code, "网络不可用，请检查网络连接"))
+            emit(DataResult.Error(ErrorCode.NETWORK_ERROR.code, "网络不可用，请检查网络连接"))
             return@flow
         }
     }
     
     try {
         val data = block()
-        emit(Result.Success(data))
+        emit(DataResult.Success(data))
     } catch (e: Exception) {
         emit(handleException(e))
     }
@@ -172,35 +172,35 @@ private fun shouldRetry(exception: Exception): Boolean {
  * 将各种异常映射到ErrorCode
  * 
  * @param e 异常对象
- * @return Result.Error 错误结果
+ * @return DataResult.Error 错误结果
  */
-private fun handleException(e: Exception): Result.Error {
+private fun handleException(e: Exception): DataResult.Error {
     LogUtil.e("Network request failed: ${e.message}", e)
     
     return when (e) {
         // 网络连接失败
-        is UnknownHostException -> Result.Error(
+        is UnknownHostException -> DataResult.Error(
             ErrorCode.NETWORK_ERROR.code,
             "网络连接失败，请检查网络设置",
             e
         )
         
         // 连接异常
-        is ConnectException -> Result.Error(
+        is ConnectException -> DataResult.Error(
             ErrorCode.NETWORK_ERROR.code,
             "无法连接到服务器，请稍后重试",
             e
         )
         
         // 请求超时
-        is SocketTimeoutException -> Result.Error(
+        is SocketTimeoutException -> DataResult.Error(
             ErrorCode.TIMEOUT_ERROR.code,
             "请求超时，请检查网络连接",
             e
         )
         
         // SSL异常
-        is SSLException -> Result.Error(
+        is SSLException -> DataResult.Error(
             ErrorCode.NETWORK_ERROR.code,
             "安全连接失败，请检查网络环境",
             e
@@ -226,25 +226,25 @@ private fun handleException(e: Exception): Result.Error {
                 else -> "网络请求失败 (${e.code()})"
             }
             
-            Result.Error(errorCode.code, message, e)
+            DataResult.Error(errorCode.code, message, e)
         }
         
         // JSON解析错误
-        is JsonSyntaxException -> Result.Error(
+        is JsonSyntaxException -> DataResult.Error(
             ErrorCode.PARSE_ERROR.code,
             "数据解析失败，请稍后重试",
             e
         )
         
         // 其他IO异常
-        is IOException -> Result.Error(
+        is IOException -> DataResult.Error(
             ErrorCode.NETWORK_ERROR.code,
             "网络异常，请检查网络连接",
             e
         )
         
         // 其他未知错误
-        else -> Result.Error(
+        else -> DataResult.Error(
             ErrorCode.UNKNOWN_ERROR.code,
             e.message ?: "未知错误，请稍后重试",
             e
@@ -259,16 +259,16 @@ private fun handleException(e: Exception): Result.Error {
  * @param T 数据类型
  * @param onSuccess 成功回调
  * @param onError 失败回调
- * @return Flow<Result<T>> 原始Flow
+ * @return Flow<DataResult<T>> 原始Flow
  */
-fun <T> Flow<Result<T>>.onResult(
+fun <T> Flow<DataResult<T>>.onResult(
     onSuccess: suspend (T) -> Unit,
     onError: suspend (Int, String) -> Unit
-): Flow<Result<T>> = flow {
+): Flow<DataResult<T>> = flow {
     collect { result ->
         when (result) {
-            is Result.Success -> onSuccess(result.data)
-            is Result.Error -> onError(result.code, result.message)
+            is DataResult.Success -> onSuccess(result.data)
+            is DataResult.Error -> onError(result.code, result.message)
         }
         emit(result)
     }
@@ -279,13 +279,13 @@ fun <T> Flow<Result<T>>.onResult(
  * 
  * @param T 数据类型
  * @param onSuccess 成功回调
- * @return Flow<Result<T>> 原始Flow
+ * @return Flow<DataResult<T>> 原始Flow
  */
-fun <T> Flow<Result<T>>.onSuccess(
+fun <T> Flow<DataResult<T>>.onSuccess(
     onSuccess: suspend (T) -> Unit
-): Flow<Result<T>> = flow {
+): Flow<DataResult<T>> = flow {
     collect { result ->
-        if (result is Result.Success) {
+        if (result is DataResult.Success) {
             onSuccess(result.data)
         }
         emit(result)
@@ -297,13 +297,13 @@ fun <T> Flow<Result<T>>.onSuccess(
  * 
  * @param T 数据类型
  * @param onError 失败回调
- * @return Flow<Result<T>> 原始Flow
+ * @return Flow<DataResult<T>> 原始Flow
  */
-fun <T> Flow<Result<T>>.onError(
+fun <T> Flow<DataResult<T>>.onError(
     onError: suspend (Int, String) -> Unit
-): Flow<Result<T>> = flow {
+): Flow<DataResult<T>> = flow {
     collect { result ->
-        if (result is Result.Error) {
+        if (result is DataResult.Error) {
             onError(result.code, result.message)
         }
         emit(result)

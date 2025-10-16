@@ -4,7 +4,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.sword.atlas.core.model.Result
+import com.sword.atlas.core.model.DataResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onEach
@@ -42,14 +42,14 @@ fun <T> Flow<T>.collectOnMain(
  * @param onError 失败回调
  * @return Flow
  */
-fun <T> Flow<Result<T>>.onResult(
+fun <T> Flow<DataResult<T>>.onResult(
     onSuccess: (T) -> Unit,
     onError: (Int, String) -> Unit
-): Flow<Result<T>> {
+): Flow<DataResult<T>> {
     return this.onEach { result ->
         when (result) {
-            is Result.Success -> onSuccess(result.data)
-            is Result.Error -> onError(result.code, result.message)
+            is DataResult.Success -> onSuccess(result.data)
+            is DataResult.Error -> onError(result.code, result.message)
         }
     }
 }
@@ -62,14 +62,14 @@ fun <T> Flow<Result<T>>.onResult(
  * @param onError 失败回调（只接收消息）
  * @return Flow
  */
-fun <T> Flow<Result<T>>.onResult(
+fun <T> Flow<DataResult<T>>.onResult(
     onSuccess: (T) -> Unit,
     onError: (String) -> Unit
-): Flow<Result<T>> {
+): Flow<DataResult<T>> {
     return this.onEach { result ->
         when (result) {
-            is Result.Success -> onSuccess(result.data)
-            is Result.Error -> onError(result.message)
+            is DataResult.Success -> onSuccess(result.data)
+            is DataResult.Error -> onError(result.message)
         }
     }
 }
@@ -98,7 +98,7 @@ fun <T> Flow<T>.catchError(
  * @param onSuccess 成功回调
  * @param onError 失败回调
  */
-fun <T> Flow<Result<T>>.collectResult(
+fun <T> Flow<DataResult<T>>.collectResult(
     lifecycleOwner: LifecycleOwner,
     minActiveState: Lifecycle.State = Lifecycle.State.STARTED,
     onSuccess: (T) -> Unit,
@@ -108,8 +108,8 @@ fun <T> Flow<Result<T>>.collectResult(
         lifecycleOwner.repeatOnLifecycle(minActiveState) {
             collect { result ->
                 when (result) {
-                    is Result.Success -> onSuccess(result.data)
-                    is Result.Error -> onError(result.code, result.message)
+                    is DataResult.Success -> onSuccess(result.data)
+                    is DataResult.Error -> onError(result.code, result.message)
                 }
             }
         }
@@ -125,7 +125,7 @@ fun <T> Flow<Result<T>>.collectResult(
  * @param onSuccess 成功回调
  * @param onError 失败回调（只接收消息）
  */
-fun <T> Flow<Result<T>>.collectResult(
+fun <T> Flow<DataResult<T>>.collectResult(
     lifecycleOwner: LifecycleOwner,
     minActiveState: Lifecycle.State = Lifecycle.State.STARTED,
     onSuccess: (T) -> Unit,
@@ -135,8 +135,8 @@ fun <T> Flow<Result<T>>.collectResult(
         lifecycleOwner.repeatOnLifecycle(minActiveState) {
             collect { result ->
                 when (result) {
-                    is Result.Success -> onSuccess(result.data)
-                    is Result.Error -> onError(result.message)
+                    is DataResult.Success -> onSuccess(result.data)
+                    is DataResult.Error -> onError(result.message)
                 }
             }
         }

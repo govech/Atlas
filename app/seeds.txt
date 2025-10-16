@@ -1264,7 +1264,7 @@ dagger.hilt.internal.Preconditions
 kotlin.reflect.KDeclarationContainer
 androidx.lifecycle.ReportFragment$LifecycleCallbacks
 com.google.android.material.datepicker.RangeDateSelector
-com.sword.atlas.core.model.Result
+com.sword.atlas.core.model.DataResult
 kotlin.reflect.ParameterizedTypeImpl$getTypeName$1$1
 com.google.android.material.sidesheet.SideSheetBehavior
 okhttp3.OkHttpClient$Builder$addInterceptor$2
@@ -16524,7 +16524,7 @@ okio.BufferedSource: java.lang.String readUtf8LineStrict(long)
 okhttp3.internal.cache.DiskLruCache: okhttp3.internal.cache.DiskLruCache$Editor edit$default(okhttp3.internal.cache.DiskLruCache,java.lang.String,long,int,java.lang.Object)
 com.google.gson.internal.bind.TypeAdapters$1: void write(com.google.gson.stream.JsonWriter,java.lang.Class)
 com.google.gson.Gson: java.lang.Object fromJson(java.lang.String,java.lang.Class)
-com.sword.atlas.core.model.Result: Result(kotlin.jvm.internal.DefaultConstructorMarker)
+com.sword.atlas.core.model.DataResult: DataResult(kotlin.jvm.internal.DefaultConstructorMarker)
 com.sword.atlas.core.common.ext.StringExtKt: float toFloatOrDefault$default(java.lang.String,float,int,java.lang.Object)
 okhttp3.Headers$Builder: okhttp3.Headers$Builder addUnsafeNonAscii(java.lang.String,java.lang.String)
 okio.-DeprecatedUpgrade: okio.-DeprecatedOkio getOkio()

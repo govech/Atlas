@@ -2,7 +2,7 @@ package com.sword.atlas.core.common.exception
 
 import com.google.gson.JsonSyntaxException
 import com.sword.atlas.core.model.ErrorCode
-import com.sword.atlas.core.model.Result
+import com.sword.atlas.core.model.DataResult
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
@@ -17,9 +17,9 @@ object ErrorMapper {
      * 将异常映射为Result.Error
      *
      * @param exception 异常对象
-     * @return Result.Error对象
+     * @return DataResult.Error对象
      */
-    fun mapException(exception: Exception): Result.Error {
+    fun mapException(exception: Exception): DataResult.Error {
         val errorCode = when (exception) {
             is UnknownHostException -> ErrorCode.NETWORK_ERROR
             is SocketTimeoutException -> ErrorCode.TIMEOUT_ERROR
@@ -27,7 +27,7 @@ object ErrorMapper {
             else -> ErrorCode.UNKNOWN_ERROR
         }
         
-        return Result.Error(
+        return DataResult.Error(
             code = errorCode.code,
             message = errorCode.message,
             exception = exception
@@ -39,11 +39,11 @@ object ErrorMapper {
      *
      * @param code 错误码
      * @param message 错误消息（可选）
-     * @return Result.Error对象
+     * @return DataResult.Error对象
      */
-    fun mapErrorCode(code: Int, message: String? = null): Result.Error {
+    fun mapErrorCode(code: Int, message: String? = null): DataResult.Error {
         val errorCode = ErrorCode.fromCode(code)
-        return Result.Error(
+        return DataResult.Error(
             code = errorCode.code,
             message = message ?: errorCode.message
         )
@@ -53,11 +53,11 @@ object ErrorMapper {
      * 将Throwable映射为Result.Error
      *
      * @param throwable Throwable对象
-     * @return Result.Error对象
+     * @return DataResult.Error对象
      */
-    fun mapThrowable(throwable: Throwable): Result.Error {
+    fun mapThrowable(throwable: Throwable): DataResult.Error {
         val errorCode = ExceptionHandler.getErrorCode(throwable)
-        return Result.Error(
+        return DataResult.Error(
             code = errorCode.code,
             message = ExceptionHandler.handle(throwable),
             exception = throwable

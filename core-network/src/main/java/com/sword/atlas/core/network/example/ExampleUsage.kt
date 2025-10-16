@@ -1,7 +1,7 @@
 package com.sword.atlas.core.network.example
 
 import com.sword.atlas.core.model.ApiResponse
-import com.sword.atlas.core.model.Result
+import com.sword.atlas.core.model.DataResult
 import com.sword.atlas.core.network.ext.flowRequest
 import com.sword.atlas.core.network.ext.flowRequestWithRetry
 import com.sword.atlas.core.network.manager.DownloadManager
@@ -70,14 +70,14 @@ class UserRepository @Inject constructor(
     /**
      * 获取用户信息
      */
-    suspend fun getUser(userId: Long): Flow<Result<User>> = flowRequest {
+    suspend fun getUser(userId: Long): Flow<DataResult<User>> = flowRequest {
         userApi.getUser(userId)
     }
     
     /**
      * 获取用户信息（带重试）
      */
-    suspend fun getUserWithRetry(userId: Long): Flow<Result<User>> = flowRequestWithRetry(
+    suspend fun getUserWithRetry(userId: Long): Flow<DataResult<User>> = flowRequestWithRetry(
         maxRetries = 3,
         retryDelayMillis = 1000L
     ) {
@@ -87,28 +87,28 @@ class UserRepository @Inject constructor(
     /**
      * 创建用户
      */
-    suspend fun createUser(request: CreateUserRequest): Flow<Result<User>> = flowRequest {
+    suspend fun createUser(request: CreateUserRequest): Flow<DataResult<User>> = flowRequest {
         userApi.createUser(request)
     }
     
     /**
      * 更新用户信息
      */
-    suspend fun updateUser(userId: Long, request: UpdateUserRequest): Flow<Result<User>> = flowRequest {
+    suspend fun updateUser(userId: Long, request: UpdateUserRequest): Flow<DataResult<User>> = flowRequest {
         userApi.updateUser(userId, request)
     }
     
     /**
      * 删除用户
      */
-    suspend fun deleteUser(userId: Long): Flow<Result<Unit>> = flowRequest {
+    suspend fun deleteUser(userId: Long): Flow<DataResult<Unit>> = flowRequest {
         userApi.deleteUser(userId)
     }
     
     /**
      * 获取用户列表
      */
-    suspend fun getUsers(page: Int, size: Int): Flow<Result<List<User>>> = flowRequest {
+    suspend fun getUsers(page: Int, size: Int): Flow<DataResult<List<User>>> = flowRequest {
         userApi.getUsers(page, size)
     }
     
@@ -149,12 +149,12 @@ class UserViewModel @Inject constructor(
     suspend fun loadUser(userId: Long) {
         userRepository.getUser(userId).collect { result ->
             when (result) {
-                is Result.Success -> {
+                is DataResult.Success -> {
                     isLoading = false
                     currentUser = result.data
                     errorMessage = null
                 }
-                is Result.Error -> {
+                is DataResult.Error -> {
                     isLoading = false
                     currentUser = null
                     errorMessage = result.message
@@ -173,11 +173,11 @@ class UserViewModel @Inject constructor(
         val request = CreateUserRequest(username, email, password)
         userRepository.createUser(request).collect { result ->
             when (result) {
-                is Result.Success -> {
+                is DataResult.Success -> {
                     // 用户创建成功
                     currentUser = result.data
                 }
-                is Result.Error -> {
+                is DataResult.Error -> {
                     // 处理创建失败
                     handleError(result.code, result.message)
                 }

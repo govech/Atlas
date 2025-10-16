@@ -3,7 +3,7 @@ package com.sword.atlas.feature.template.data.repository
 import com.sword.atlas.core.common.base.BaseRepository
 import com.sword.atlas.core.common.util.SPUtil
 import com.sword.atlas.core.database.dao.UserDao
-import com.sword.atlas.core.model.Result
+import com.sword.atlas.core.model.DataResult
 import com.sword.atlas.feature.template.data.api.LoginApi
 import com.sword.atlas.feature.template.data.model.LoginRequest
 import com.sword.atlas.feature.template.data.model.User
@@ -25,14 +25,14 @@ class LoginRepository @Inject constructor(
      * @param password 密码
      * @return 登录结果，成功返回用户信息，失败返回错误信息
      */
-    suspend fun login(username: String, password: String): Result<User> {
+    suspend fun login(username: String, password: String): DataResult<User> {
         // 执行网络请求
         val result = executeRequest {
             api.login(LoginRequest(username, password))
         }
         
         // 如果登录成功，保存用户信息到本地
-        if (result is Result.Success) {
+        if (result is DataResult.Success) {
             val user = result.data
             // 保存Token到SharedPreferences
             SPUtil.putString("token", user.token)

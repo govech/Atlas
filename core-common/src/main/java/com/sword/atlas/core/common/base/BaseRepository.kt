@@ -2,7 +2,7 @@ package com.sword.atlas.core.common.base
 
 import com.sword.atlas.core.common.exception.ErrorMapper
 import com.sword.atlas.core.model.ApiResponse
-import com.sword.atlas.core.model.Result
+import com.sword.atlas.core.model.DataResult
 
 /**
  * Repository基类
@@ -23,21 +23,21 @@ abstract class BaseRepository {
      */
     protected suspend fun <T> executeRequest(
         block: suspend () -> ApiResponse<T>
-    ): Result<T> {
+    ): DataResult<T> {
         return try {
             val response = block()
             if (response.isSuccess()) {
                 val data = response.data
                 if (data != null) {
-                    Result.Success(data)
+                    DataResult.Success(data)
                 } else {
-                    Result.Error(
+                    DataResult.Error(
                         code = response.code,
                         message = "数据为空"
                     )
                 }
             } else {
-                Result.Error(
+                DataResult.Error(
                     code = response.code,
                     message = response.message
                 )
@@ -58,12 +58,12 @@ abstract class BaseRepository {
      */
     protected suspend fun <T> executeDb(
         block: suspend () -> T
-    ): Result<T> {
+    ): DataResult<T> {
         return try {
             val data = block()
-            Result.Success(data)
+            DataResult.Success(data)
         } catch (e: Exception) {
-            Result.Error(
+            DataResult.Error(
                 code = -1,
                 message = e.message ?: "数据库操作失败",
                 exception = e
@@ -82,10 +82,10 @@ abstract class BaseRepository {
      */
     protected suspend fun <T> execute(
         block: suspend () -> T
-    ): Result<T> {
+    ): DataResult<T> {
         return try {
             val data = block()
-            Result.Success(data)
+            DataResult.Success(data)
         } catch (e: Exception) {
             ErrorMapper.mapException(e)
         }
