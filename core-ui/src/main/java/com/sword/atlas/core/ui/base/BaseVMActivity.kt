@@ -1,7 +1,6 @@
 package com.sword.atlas.core.ui.base
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -20,7 +19,7 @@ import kotlinx.coroutines.launch
  * @param VB ViewBinding类型
  * @param VM ViewModel类型
  */
-abstract class BaseVMActivity<VB : ViewBinding, VM : BaseViewModel> : AppCompatActivity() {
+abstract class BaseVMActivity<VB : ViewBinding, VM : BaseViewModel> : BaseAppActivity() {
     
     /**
      * ViewBinding实例
@@ -50,13 +49,6 @@ abstract class BaseVMActivity<VB : ViewBinding, VM : BaseViewModel> : AppCompatA
      * @return ViewBinding实例
      */
     protected abstract fun createBinding(): VB
-    
-    /**
-     * 初始化视图
-     *
-     * 在此方法中进行视图的初始化操作，如设置监听器等
-     */
-    protected open fun initView() {}
     
     /**
      * 观察数据变化
@@ -89,13 +81,6 @@ abstract class BaseVMActivity<VB : ViewBinding, VM : BaseViewModel> : AppCompatA
     }
     
     /**
-     * 初始化数据
-     *
-     * 在此方法中进行数据的初始化操作，如加载数据等
-     */
-    protected open fun initData() {}
-    
-    /**
      * 显示Loading状态
      *
      * 子类可以重写此方法自定义Loading显示方式
@@ -118,6 +103,6 @@ abstract class BaseVMActivity<VB : ViewBinding, VM : BaseViewModel> : AppCompatA
      * @param message 错误消息
      */
     protected open fun showError(message: String) {
-        toast(message)
+        showToast(message)
     }
 }

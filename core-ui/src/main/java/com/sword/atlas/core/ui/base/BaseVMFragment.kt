@@ -4,13 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
 import com.sword.atlas.core.common.base.BaseViewModel
-import com.sword.atlas.core.common.ext.toast
 import kotlinx.coroutines.launch
 
 /**
@@ -24,7 +22,7 @@ import kotlinx.coroutines.launch
  * @param VB ViewBinding类型
  * @param VM ViewModel类型
  */
-abstract class BaseVMFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
+abstract class BaseVMFragment<VB : ViewBinding, VM : BaseViewModel> : BaseAppFragment() {
     
     private var _binding: VB? = null
     
@@ -74,13 +72,6 @@ abstract class BaseVMFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment()
     protected abstract fun createBinding(inflater: LayoutInflater, container: ViewGroup?): VB
     
     /**
-     * 初始化视图
-     *
-     * 在此方法中进行视图的初始化操作，如设置监听器等
-     */
-    protected open fun initView() {}
-    
-    /**
      * 观察数据变化
      *
      * 默认观察loading和error状态
@@ -112,13 +103,6 @@ abstract class BaseVMFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment()
     }
     
     /**
-     * 初始化数据
-     *
-     * 在此方法中进行数据的初始化操作，如加载数据等
-     */
-    protected open fun initData() {}
-    
-    /**
      * 显示Loading状态
      *
      * 子类可以重写此方法自定义Loading显示方式
@@ -141,6 +125,6 @@ abstract class BaseVMFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment()
      * @param message 错误消息
      */
     protected open fun showError(message: String) {
-        requireContext().toast(message)
+        showToast(message)
     }
 }

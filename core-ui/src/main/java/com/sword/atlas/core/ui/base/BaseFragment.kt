@@ -4,30 +4,35 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.sword.atlas.core.common.ext.toast
+import androidx.viewbinding.ViewBinding
 
 /**
  * Fragment基类
  *
- * 提供基础的生命周期管理和通用功能
- * 所有Fragment应继承此类以获得统一的基础功能
+ * 提供基础的生命周期管理和ViewBinding支持
+ * 所有不需要ViewModel的Fragment应继承此类以获得统一的基础功能
+ *
+ * @param VB ViewBinding类型
  */
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment<VB : ViewBinding> : BaseAppFragment() {
+    
+    private var _binding: VB? = null
     
     /**
-     * 获取布局资源ID
+     * ViewBinding实例
      *
-     * @return 布局资源ID
+     * 只在onCreateView和onDestroyView之间有效
      */
-    protected abstract fun getLayoutId(): Int
+    protected val binding: VB
+        get() = _binding!!
     
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(getLayoutId(), container, false)
+        _binding = createBinding(inflater, container)
+        return binding.root
     }
     
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,26 +41,17 @@ abstract class BaseFragment : Fragment() {
         initData()
     }
     
-    /**
-     * 初始化视图
-     *
-     * 在此方法中进行视图的初始化操作，如设置监听器等
-     */
-    protected open fun initView() {}
-    
-    /**
-     * 初始化数据
-     *
-     * 在此方法中进行数据的初始化操作，如加载数据等
-     */
-    protected open fun initData() {}
-    
-    /**
-     * 显示Toast提示
-     *
-     * @param message 提示消息
-     */
-    protected fun showToast(message: String) {
-        requireContext().toast(message)
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
+    
+    /**
+     * 创建ViewBinding实例
+     *
+     * @param inflater LayoutInflater
+     * @param container ViewGroup容器
+     * @return ViewBinding实例
+     */
+    protected abstract fun createBinding(inflater: LayoutInflater, container: ViewGroup?): VB
 }
