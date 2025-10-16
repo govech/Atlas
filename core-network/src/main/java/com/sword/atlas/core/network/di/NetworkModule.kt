@@ -7,6 +7,7 @@ import com.sword.atlas.core.common.constant.AppConstants
 import com.sword.atlas.core.network.BuildConfig
 import com.sword.atlas.core.network.config.NetworkConfig
 import com.sword.atlas.core.network.interceptor.CacheInterceptor
+import com.sword.atlas.core.network.interceptor.ErrorHandlingInterceptor
 import com.sword.atlas.core.network.interceptor.LoggingInterceptor
 import com.sword.atlas.core.network.interceptor.SignInterceptor
 import com.sword.atlas.core.network.interceptor.TokenInterceptor
@@ -134,6 +135,15 @@ abstract class NetworkModule {
         }
         
         /**
+         * 提供ErrorHandlingInterceptor
+         */
+        @Provides
+        @Singleton
+        fun provideErrorHandlingInterceptor(): ErrorHandlingInterceptor {
+            return ErrorHandlingInterceptor()
+        }
+        
+        /**
          * 提供OkHttpClient单例
          * 配置超时时间、拦截器和缓存
          */
@@ -141,6 +151,7 @@ abstract class NetworkModule {
         @Singleton
         fun provideOkHttpClient(
             cache: Cache,
+            errorHandlingInterceptor: ErrorHandlingInterceptor,
             loggingInterceptor: LoggingInterceptor,
             tokenInterceptor: TokenInterceptor,
             signInterceptor: SignInterceptor,
@@ -160,6 +171,7 @@ abstract class NetworkModule {
                 .cache(cache)
                 
                 // 拦截器配置（顺序很重要）
+                .addInterceptor(errorHandlingInterceptor) // 错误处理（最先添加，捕获所有异常）
                 .addInterceptor(tokenInterceptor) // 添加Token
                 .addInterceptor(signInterceptor) // 添加签名
                 .addInterceptor(cacheInterceptor) // 缓存处理
