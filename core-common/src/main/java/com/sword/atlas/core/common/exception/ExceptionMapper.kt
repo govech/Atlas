@@ -3,6 +3,7 @@ package com.sword.atlas.core.common.exception
 import com.google.gson.JsonSyntaxException
 import com.sword.atlas.core.model.ErrorCode
 import com.sword.atlas.core.model.DataResult
+import com.sword.atlas.core.common.exception.ExceptionMessageConfig.toExceptionInfo
 import java.io.IOException
 import java.io.InterruptedIOException
 import java.net.ConnectException
@@ -51,100 +52,24 @@ object ExceptionMapper {
     fun mapException(exception: Throwable): ExceptionInfo {
         return when (exception) {
             // ========== 网络相关异常 ==========
-            
-            // DNS解析失败 - 无法找到主机
-            is UnknownHostException -> ExceptionInfo(
-                errorCode = ErrorCode.NETWORK_ERROR,
-                message = "无法连接到服务器，请检查网络设置",
-                httpStatusCode = 503
-            )
-            
-            // SSL握手失败
-            is SSLHandshakeException -> ExceptionInfo(
-                errorCode = ErrorCode.NETWORK_ERROR,
-                message = "安全连接握手失败，请检查证书配置",
-                httpStatusCode = 525
-            )
-            
-            // SSL证书验证失败
-            is SSLPeerUnverifiedException -> ExceptionInfo(
-                errorCode = ErrorCode.NETWORK_ERROR,
-                message = "服务器证书验证失败",
-                httpStatusCode = 495
-            )
-            
-            // SSL其他异常
-            is SSLException -> ExceptionInfo(
-                errorCode = ErrorCode.NETWORK_ERROR,
-                message = "安全连接失败，请检查网络环境",
-                httpStatusCode = 495
-            )
-            
-            // Socket超时（读写超时）
-            is SocketTimeoutException -> ExceptionInfo(
-                errorCode = ErrorCode.TIMEOUT_ERROR,
-                message = "请求超时，请检查网络连接",
-                httpStatusCode = 408
-            )
-            
-            // 连接被拒绝
-            is ConnectException -> ExceptionInfo(
-                errorCode = ErrorCode.NETWORK_ERROR,
-                message = "无法连接到服务器，请稍后重试",
-                httpStatusCode = 503
-            )
-            
-            // Socket异常（连接重置、管道损坏等）
-            is SocketException -> ExceptionInfo(
-                errorCode = ErrorCode.NETWORK_ERROR,
-                message = "网络连接异常，请重试",
-                httpStatusCode = 503
-            )
-            
-            // 协议异常
-            is ProtocolException -> ExceptionInfo(
-                errorCode = ErrorCode.NETWORK_ERROR,
-                message = "网络协议错误",
-                httpStatusCode = 400
-            )
-            
-            // 不支持的服务
-            is UnknownServiceException -> ExceptionInfo(
-                errorCode = ErrorCode.NETWORK_ERROR,
-                message = "不支持的网络服务",
-                httpStatusCode = 501
-            )
-            
-            // IO中断（请求被取消）
-            is InterruptedIOException -> ExceptionInfo(
-                errorCode = ErrorCode.NETWORK_ERROR,
-                message = "请求已取消",
-                httpStatusCode = 499
-            )
-            
-            // 其他IO异常
-            is IOException -> ExceptionInfo(
-                errorCode = ErrorCode.NETWORK_ERROR,
-                message = "网络异常，请检查网络连接",
-                httpStatusCode = 503
-            )
+            is UnknownHostException -> ExceptionMessageConfig.UNKNOWN_HOST.toExceptionInfo()
+            is SSLHandshakeException -> ExceptionMessageConfig.SSL_HANDSHAKE.toExceptionInfo()
+            is SSLPeerUnverifiedException -> ExceptionMessageConfig.SSL_PEER_UNVERIFIED.toExceptionInfo()
+            is SSLException -> ExceptionMessageConfig.SSL_ERROR.toExceptionInfo()
+            is SocketTimeoutException -> ExceptionMessageConfig.SOCKET_TIMEOUT.toExceptionInfo()
+            is ConnectException -> ExceptionMessageConfig.CONNECT_ERROR.toExceptionInfo()
+            is SocketException -> ExceptionMessageConfig.SOCKET_ERROR.toExceptionInfo()
+            is ProtocolException -> ExceptionMessageConfig.PROTOCOL_ERROR.toExceptionInfo()
+            is UnknownServiceException -> ExceptionMessageConfig.UNKNOWN_SERVICE.toExceptionInfo()
+            is InterruptedIOException -> ExceptionMessageConfig.INTERRUPTED_IO.toExceptionInfo()
+            is IOException -> ExceptionMessageConfig.IO_ERROR.toExceptionInfo()
             
             // ========== 数据解析异常 ==========
-            
-            // JSON解析异常
-            is JsonSyntaxException -> ExceptionInfo(
-                errorCode = ErrorCode.PARSE_ERROR,
-                message = "数据解析失败",
-                httpStatusCode = 500
-            )
+            is JsonSyntaxException -> ExceptionMessageConfig.JSON_PARSE_ERROR.toExceptionInfo()
             
             // ========== 未知异常 ==========
-            
-            // 其他未知错误
-            else -> ExceptionInfo(
-                errorCode = ErrorCode.UNKNOWN_ERROR,
-                message = exception.message ?: "未知错误，请稍后重试",
-                httpStatusCode = 500
+            else -> ExceptionMessageConfig.UNKNOWN_ERROR.toExceptionInfo(
+                customMessage = exception.message  // 保留原始异常消息
             )
         }
     }

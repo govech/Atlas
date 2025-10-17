@@ -62,7 +62,7 @@ class LoginActivity : BaseVMActivity<ActivityLoginBinding, LoginViewModel>() {
                         // 登录失败
                         hideLoading()
                         toast(state.message)
-                        Router.with(this@LoginActivity).to("/home").go()
+//                        Router.with(this@LoginActivity).to("/home").go()
                     }
                 }
             }

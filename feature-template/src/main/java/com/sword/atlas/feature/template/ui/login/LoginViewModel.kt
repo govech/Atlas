@@ -34,9 +34,9 @@ class LoginViewModel @Inject constructor(
      */
     fun login(username: String, password: String) {
         // 验证输入
-        if (!validateInput(username, password)) {
-            return
-        }
+//        if (!validateInput(username, password)) {
+//            return
+//        }
         
         viewModelScope.launch {
             // 显示加载状态

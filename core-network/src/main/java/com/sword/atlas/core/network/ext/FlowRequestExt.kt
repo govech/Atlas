@@ -3,6 +3,7 @@ package com.sword.atlas.core.network.ext
 import android.content.Context
 import com.google.gson.JsonSyntaxException
 import com.sword.atlas.core.common.exception.ExceptionMapper
+import com.sword.atlas.core.common.exception.ExceptionMessageConfig
 import com.sword.atlas.core.common.util.LogUtil
 import com.sword.atlas.core.common.util.NetworkUtil
 import com.sword.atlas.core.model.ApiResponse
@@ -232,14 +233,7 @@ private fun mapHttpStatusToBusinessCode(httpStatus: Int): ErrorCode {
  * @return 错误消息
  */
 private fun mapHttpStatusToMessage(httpStatus: Int): String {
-    return when (httpStatus) {
-        400 -> "请求参数错误"
-        401 -> "登录已过期，请重新登录"
-        403 -> "权限不足，无法访问"
-        404 -> "请求的资源不存在"
-        in 500..599 -> "服务器错误，请稍后重试"
-        else -> "网络请求失败 (HTTP $httpStatus)"
-    }
+    return ExceptionMessageConfig.getHttpConfig(httpStatus).message
 }
 
 /**
