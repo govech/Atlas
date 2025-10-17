@@ -2,6 +2,7 @@ package com.sword.atlas.core.network.ext
 
 import android.content.Context
 import com.google.gson.JsonSyntaxException
+import com.sword.atlas.core.common.exception.ExceptionMapper
 import com.sword.atlas.core.common.util.LogUtil
 import com.sword.atlas.core.common.util.NetworkUtil
 import com.sword.atlas.core.model.ApiResponse
@@ -169,7 +170,11 @@ private fun shouldRetry(exception: Exception): Boolean {
 
 /**
  * 异常处理
- * 将各种异常映射到ErrorCode
+ * 将各种异常映射到错误信息
+ * 
+ * 处理策略：
+ * - HttpException: 特殊处理（Retrofit专属，需要映射HTTP状态码）
+ * - 其他异常: 使用 ExceptionMapper 统一处理
  * 
  * @param e 异常对象
  * @return DataResult.Error 错误结果
@@ -178,77 +183,62 @@ private fun handleException(e: Exception): DataResult.Error {
     LogUtil.e("Network request failed: ${e.message}", e)
     
     return when (e) {
-        // 网络连接失败
-        is UnknownHostException -> DataResult.Error(
-            ErrorCode.NETWORK_ERROR.code,
-            "网络连接失败，请检查网络设置",
-            e
-        )
-        
-        // 连接异常
-        is ConnectException -> DataResult.Error(
-            ErrorCode.NETWORK_ERROR.code,
-            "无法连接到服务器，请稍后重试",
-            e
-        )
-        
-        // 请求超时
-        is SocketTimeoutException -> DataResult.Error(
-            ErrorCode.TIMEOUT_ERROR.code,
-            "请求超时，请检查网络连接",
-            e
-        )
-        
-        // SSL异常
-        is SSLException -> DataResult.Error(
-            ErrorCode.NETWORK_ERROR.code,
-            "安全连接失败，请检查网络环境",
-            e
-        )
-        
-        // HTTP错误
+        // HttpException 是 Retrofit 特有的异常，需要在这里处理
+        // 因为 core-common 不依赖 retrofit，无法在 ExceptionMapper 中处理
         is HttpException -> {
-            val errorCode = when (e.code()) {
-                400 -> ErrorCode.BAD_REQUEST
-                401 -> ErrorCode.UNAUTHORIZED
-                403 -> ErrorCode.FORBIDDEN
-                404 -> ErrorCode.NOT_FOUND
-                in 500..599 -> ErrorCode.SERVER_ERROR
-                else -> ErrorCode.UNKNOWN_ERROR
-            }
+            val httpStatus = e.code()
+            val businessCode = mapHttpStatusToBusinessCode(httpStatus)
+            val message = mapHttpStatusToMessage(httpStatus)
             
-            val message = when (e.code()) {
-                400 -> "请求参数错误"
-                401 -> "登录已过期，请重新登录"
-                403 -> "权限不足，无法访问"
-                404 -> "请求的资源不存在"
-                in 500..599 -> "服务器错误，请稍后重试"
-                else -> "网络请求失败 (${e.code()})"
-            }
-            
-            DataResult.Error(errorCode.code, message, e)
+            DataResult.Error(
+                code = businessCode.code,
+                message = message,
+                exception = e
+            )
         }
         
-        // JSON解析错误
-        is JsonSyntaxException -> DataResult.Error(
-            ErrorCode.PARSE_ERROR.code,
-            "数据解析失败，请稍后重试",
-            e
-        )
-        
-        // 其他IO异常
-        is IOException -> DataResult.Error(
-            ErrorCode.NETWORK_ERROR.code,
-            "网络异常，请检查网络连接",
-            e
-        )
-        
-        // 其他未知错误
-        else -> DataResult.Error(
-            ErrorCode.UNKNOWN_ERROR.code,
-            e.message ?: "未知错误，请稍后重试",
-            e
-        )
+        // 其他异常（网络、SSL、解析等）使用 ExceptionMapper 统一处理
+        else -> ExceptionMapper.mapToDataResult(e)
+    }
+}
+
+/**
+ * 将 HTTP 状态码映射为业务错误码
+ * 
+ * 说明：当服务器返回 HTTP 错误状态码时（如 401、404），
+ * 需要将其映射为统一的业务错误码（如 1010、1012）
+ * 
+ * 注意：这个映射只在 core-network 层有效，
+ * 因为 HttpException 是 Retrofit 的类，core-common 不依赖它
+ * 
+ * @param httpStatus HTTP状态码
+ * @return 对应的业务错误码
+ */
+private fun mapHttpStatusToBusinessCode(httpStatus: Int): ErrorCode {
+    return when (httpStatus) {
+        400 -> ErrorCode.BAD_REQUEST_ERROR       // HTTP 400 → 业务码 1013
+        401 -> ErrorCode.UNAUTHORIZED_ERROR      // HTTP 401 → 业务码 1010
+        403 -> ErrorCode.FORBIDDEN_ERROR         // HTTP 403 → 业务码 1011
+        404 -> ErrorCode.NOT_FOUND_ERROR         // HTTP 404 → 业务码 1012
+        in 500..599 -> ErrorCode.SERVER_ERROR    // HTTP 5xx → 业务码 1004
+        else -> ErrorCode.UNKNOWN_ERROR          // 其他 → 业务码 -1
+    }
+}
+
+/**
+ * 将 HTTP 状态码映射为用户友好的错误消息
+ * 
+ * @param httpStatus HTTP状态码
+ * @return 错误消息
+ */
+private fun mapHttpStatusToMessage(httpStatus: Int): String {
+    return when (httpStatus) {
+        400 -> "请求参数错误"
+        401 -> "登录已过期，请重新登录"
+        403 -> "权限不足，无法访问"
+        404 -> "请求的资源不存在"
+        in 500..599 -> "服务器错误，请稍后重试"
+        else -> "网络请求失败 (HTTP $httpStatus)"
     }
 }
 

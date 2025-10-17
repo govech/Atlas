@@ -53,18 +53,18 @@ class ErrorHandlingInterceptor : Interceptor {
         // 使用统一的异常映射器
         val exceptionInfo = ExceptionMapper.mapException(exception)
         
-        // 构建标准错误响应体
+        // 构建标准错误响应体（业务错误码）
         val errorBody = JSONObject().apply {
-            put("code", exceptionInfo.errorCode.code)
+            put("code", exceptionInfo.errorCode.code)  // 业务错误码（如 1001）
             put("message", exceptionInfo.message)
             put("data", JSONObject.NULL)
         }.toString()
         
-        // 创建响应
+        // 创建响应（HTTP 状态码用于协议层）
         return Response.Builder()
             .request(request)
             .protocol(Protocol.HTTP_1_1)
-            .code(exceptionInfo.httpCode)
+            .code(exceptionInfo.httpStatusCode)  // HTTP状态码（如 503），仅用于日志和监控
             .message(exceptionInfo.message)
             .body(errorBody.toResponseBody("application/json".toMediaTypeOrNull()))
             .build()

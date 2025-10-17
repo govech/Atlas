@@ -25,11 +25,21 @@ object ExceptionMapper {
     
     /**
      * 异常映射信息
+     * 
+     * @property errorCode 业务错误码，用于业务逻辑判断（如 NETWORK_ERROR、TIMEOUT_ERROR）
+     * @property message 用户友好的错误消息，可直接展示给用户
+     * @property httpStatusCode HTTP 标准状态码（如 503、408、500），用于：
+     *   - 日志记录和调试：便于快速定位问题类型
+     *   - APM 监控和统计：统计各类HTTP错误的发生频率
+     *   - 构造符合 HTTP 规范的 Response
+     *   
+     *   注意：业务层（ViewModel/Repository）不应该使用此字段，
+     *        应该使用 errorCode.code 进行业务逻辑判断
      */
     data class ExceptionInfo(
         val errorCode: ErrorCode,
         val message: String,
-        val httpCode: Int
+        val httpStatusCode: Int
     )
     
     /**
@@ -46,77 +56,77 @@ object ExceptionMapper {
             is UnknownHostException -> ExceptionInfo(
                 errorCode = ErrorCode.NETWORK_ERROR,
                 message = "无法连接到服务器，请检查网络设置",
-                httpCode = 503
+                httpStatusCode = 503
             )
             
             // SSL握手失败
             is SSLHandshakeException -> ExceptionInfo(
                 errorCode = ErrorCode.NETWORK_ERROR,
                 message = "安全连接握手失败，请检查证书配置",
-                httpCode = 525
+                httpStatusCode = 525
             )
             
             // SSL证书验证失败
             is SSLPeerUnverifiedException -> ExceptionInfo(
                 errorCode = ErrorCode.NETWORK_ERROR,
                 message = "服务器证书验证失败",
-                httpCode = 495
+                httpStatusCode = 495
             )
             
             // SSL其他异常
             is SSLException -> ExceptionInfo(
                 errorCode = ErrorCode.NETWORK_ERROR,
                 message = "安全连接失败，请检查网络环境",
-                httpCode = 495
+                httpStatusCode = 495
             )
             
             // Socket超时（读写超时）
             is SocketTimeoutException -> ExceptionInfo(
                 errorCode = ErrorCode.TIMEOUT_ERROR,
                 message = "请求超时，请检查网络连接",
-                httpCode = 408
+                httpStatusCode = 408
             )
             
             // 连接被拒绝
             is ConnectException -> ExceptionInfo(
                 errorCode = ErrorCode.NETWORK_ERROR,
                 message = "无法连接到服务器，请稍后重试",
-                httpCode = 503
+                httpStatusCode = 503
             )
             
             // Socket异常（连接重置、管道损坏等）
             is SocketException -> ExceptionInfo(
                 errorCode = ErrorCode.NETWORK_ERROR,
                 message = "网络连接异常，请重试",
-                httpCode = 503
+                httpStatusCode = 503
             )
             
             // 协议异常
             is ProtocolException -> ExceptionInfo(
                 errorCode = ErrorCode.NETWORK_ERROR,
                 message = "网络协议错误",
-                httpCode = 400
+                httpStatusCode = 400
             )
             
             // 不支持的服务
             is UnknownServiceException -> ExceptionInfo(
                 errorCode = ErrorCode.NETWORK_ERROR,
                 message = "不支持的网络服务",
-                httpCode = 501
+                httpStatusCode = 501
             )
             
             // IO中断（请求被取消）
             is InterruptedIOException -> ExceptionInfo(
                 errorCode = ErrorCode.NETWORK_ERROR,
                 message = "请求已取消",
-                httpCode = 499
+                httpStatusCode = 499
             )
             
             // 其他IO异常
             is IOException -> ExceptionInfo(
                 errorCode = ErrorCode.NETWORK_ERROR,
                 message = "网络异常，请检查网络连接",
-                httpCode = 503
+                httpStatusCode = 503
             )
             
             // ========== 数据解析异常 ==========
@@ -125,7 +135,7 @@ object ExceptionMapper {
             is JsonSyntaxException -> ExceptionInfo(
                 errorCode = ErrorCode.PARSE_ERROR,
                 message = "数据解析失败",
-                httpCode = 500
+                httpStatusCode = 500
             )
             
             // ========== 未知异常 ==========
@@ -134,7 +144,7 @@ object ExceptionMapper {
             else -> ExceptionInfo(
                 errorCode = ErrorCode.UNKNOWN_ERROR,
                 message = exception.message ?: "未知错误，请稍后重试",
-                httpCode = 500
+                httpStatusCode = 500
             )
         }
     }
@@ -166,7 +176,7 @@ object ExceptionMapper {
      * @return HTTP状态码
      */
     fun mapToHttpCode(exception: Throwable): Int {
-        return mapException(exception).httpCode
+        return mapException(exception).httpStatusCode
     }
     
     /**

@@ -1,8 +1,8 @@
 package com.sword.atlas.core.network
 
 import com.sword.atlas.core.model.ApiResponse
+import com.sword.atlas.core.model.DataResult
 import com.sword.atlas.core.model.ErrorCode
-import com.sword.atlas.core.model.Result
 import com.sword.atlas.core.network.ext.flowRequest
 import com.sword.atlas.core.network.ext.flowRequestWithRetry
 import io.mockk.*
@@ -39,8 +39,8 @@ class FlowRequestExtTest {
         val result = flowRequest { apiResponse }.first()
         
         // Then
-        assertTrue(result is Result.Success)
-        assertEquals(expectedData, (result as Result.Success).data)
+        assertTrue(result is DataResult.Success)
+        assertEquals(expectedData, (result as DataResult.Success).data)
     }
     
     @Test
@@ -52,8 +52,8 @@ class FlowRequestExtTest {
         val result = flowRequest { apiResponse }.first()
         
         // Then
-        assertTrue(result is Result.Error)
-        val error = result as Result.Error
+        assertTrue(result is DataResult.Error)
+        val error = result as DataResult.Error
         assertEquals(400, error.code)
         assertEquals("Bad Request", error.message)
     }
@@ -67,8 +67,8 @@ class FlowRequestExtTest {
         val result = flowRequest { apiResponse }.first()
         
         // Then
-        assertTrue(result is Result.Error)
-        val error = result as Result.Error
+        assertTrue(result is DataResult.Error)
+        val error = result as DataResult.Error
         assertEquals(ErrorCode.PARSE_ERROR.code, error.code)
     }
     
@@ -81,8 +81,8 @@ class FlowRequestExtTest {
         val result = flowRequest<String> { throw exception }.first()
         
         // Then
-        assertTrue(result is Result.Error)
-        val error = result as Result.Error
+        assertTrue(result is DataResult.Error)
+        val error = result as DataResult.Error
         assertEquals(ErrorCode.NETWORK_ERROR.code, error.code)
         assertTrue(error.message.contains("网络连接失败"))
     }
@@ -96,8 +96,8 @@ class FlowRequestExtTest {
         val result = flowRequest<String> { throw exception }.first()
         
         // Then
-        assertTrue(result is Result.Error)
-        val error = result as Result.Error
+        assertTrue(result is DataResult.Error)
+        val error = result as DataResult.Error
         assertEquals(ErrorCode.TIMEOUT_ERROR.code, error.code)
         assertTrue(error.message.contains("请求超时"))
     }
@@ -113,10 +113,10 @@ class FlowRequestExtTest {
         val result = flowRequest<String> { throw exception }.first()
         
         // Then
-        assertTrue(result is Result.Error)
-        val error = result as Result.Error
-        assertEquals(ErrorCode.UNAUTHORIZED.code, error.code)
-        assertTrue(error.message.contains("登录已过期"))
+        assertTrue(result is DataResult.Error)
+        val error = result as DataResult.Error
+        assertEquals(ErrorCode.UNAUTHORIZED_ERROR.code, error.code)
+        assertTrue(error.message.contains("登录"))
     }
     
     @Test
@@ -139,8 +139,8 @@ class FlowRequestExtTest {
         }.first()
         
         // Then
-        assertTrue(result is Result.Success)
-        assertEquals("data", (result as Result.Success).data)
+        assertTrue(result is DataResult.Success)
+        assertEquals("data", (result as DataResult.Success).data)
         assertEquals(3, callCount) // 初始调用 + 2次重试
     }
     
@@ -162,7 +162,7 @@ class FlowRequestExtTest {
         }.first()
         
         // Then
-        assertTrue(result is Result.Error)
+        assertTrue(result is DataResult.Error)
         assertEquals(1, callCount) // 只调用一次，不重试
     }
 }

@@ -139,7 +139,7 @@ fun <T> ApiResponse<T>.isNetworkError(): Boolean {
  * 判断是否为认证错误
  */
 fun <T> ApiResponse<T>.isAuthError(): Boolean {
-    return code == ErrorCode.UNAUTHORIZED.code || 
+    return code == ErrorCode.UNAUTHORIZED_ERROR.code || 
            code == ErrorCode.LOGIN_EXPIRED.code
 }
 
@@ -147,7 +147,7 @@ fun <T> ApiResponse<T>.isAuthError(): Boolean {
  * 判断是否为权限错误
  */
 fun <T> ApiResponse<T>.isPermissionError(): Boolean {
-    return code == ErrorCode.FORBIDDEN.code || 
+    return code == ErrorCode.FORBIDDEN_ERROR.code || 
            code == ErrorCode.PERMISSION_ERROR.code
 }
 
