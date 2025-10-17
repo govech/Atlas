@@ -1,6 +1,6 @@
 package com.sword.atlas.core.common.base
 
-import com.sword.atlas.core.common.exception.ErrorMapper
+import com.sword.atlas.core.common.exception.ExceptionMapper
 import com.sword.atlas.core.model.ApiResponse
 import com.sword.atlas.core.model.DataResult
 
@@ -43,7 +43,7 @@ abstract class BaseRepository {
                 )
             }
         } catch (e: Exception) {
-            ErrorMapper.mapException(e)
+            ExceptionMapper.mapToDataResult(e)
         }
     }
     
@@ -87,7 +87,7 @@ abstract class BaseRepository {
             val data = block()
             DataResult.Success(data)
         } catch (e: Exception) {
-            ErrorMapper.mapException(e)
+            ExceptionMapper.mapToDataResult(e)
         }
     }
 }

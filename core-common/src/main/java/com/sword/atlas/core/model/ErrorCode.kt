@@ -1,7 +1,7 @@
 package com.sword.atlas.core.model
 
 /**
- * 错误码枚举
+ * 业务错误码枚举
  *
  * 定义系统中所有可能的错误码和对应的错误消息
  */
